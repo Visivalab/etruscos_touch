@@ -1,0 +1,30 @@
+html,body{
+    margin: 0;
+    user-select: none;
+}
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+}
+
+/* General styles */
+:root{
+    --background-color: #090808;
+    --primary-color: #DDCFAD;
+}
+body{
+    background-color: var(--background-color);
+}
+h1{
+    color: var(--primary-color);
+    font-family: 'Roboto Condensed';
+    font-size: 64px;
+}
+
+
+
+/* Utility styles */
+.bold{ font-weight: 700 }
+.regular{ font-weight: 500 }
+.medium{ font-weight: 300 }
+
+
