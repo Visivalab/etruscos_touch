@@ -22,7 +22,7 @@ template.innerHTML = `
     }
 </style>
 <div>
-    <divinity-header img="" name="" description=""></divinity-header>
+    <divinity-header divinity="fufluns"></divinity-header>
     <div class="divinity__list">
         <divinity-portrait img="/images/fufluns-portrait.png" name="Fufluns"></divinity-portrait>
         <divinity-portrait img="/images/laran-portrait.png" name="Laran"></divinity-portrait>
