@@ -10,10 +10,20 @@ export const db = {
             "es": "Descripción de Fufluns española"
         },
         "long_description": {
-            "fr": "Dieu du vin, protecteur de la viticulture, souvent représenté comme un jeune homme nu, entouré de feuilles de vigne. Il tient dans sa tenant dans la main un canthare, vase utilisé pour boire du vin.",
+            "fr": "Dieu du vin, protecteur de la viticulture, souvent représenté comme un jeune homme nu, entouré de <strong>feuilles de vigne.</strong><br>Il tient dans sa tenant dans la main <strong>un canthare,</strong> vase utilisé pour boire du vin.",
             "en": "English Fufluns long description",
             "es": "Descripción larga de Fufluns española"
-        }
+        },
+        "zoom_details": [
+            {
+                "lens_position": [80, 250],
+                "box_position": [-190, 20]
+            },
+            {
+                "lens_position": [256, 159],
+                "box_position": [-190, 20]
+            }
+        ]
         
     }
 }
