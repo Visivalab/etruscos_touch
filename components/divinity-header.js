@@ -214,10 +214,12 @@ export class divinityHeader extends HTMLElement {
     this.attachShadow({ mode:'open' })
     this.shadowRoot.appendChild(template.content.cloneNode(true))
 
-    this.divinity = this.getAttribute('divinity')   
-  }
+}
 
-  connectedCallback() {
+connectedCallback() {
+    this.divinity = this.getAttribute('divinity')
+    console.log(this.divinity)
+
     this.name = this.shadowRoot.querySelector('.name')
     this.description = this.shadowRoot.querySelector('.description')
     this.longDescription = this.shadowRoot.querySelector('.detailsBox p')

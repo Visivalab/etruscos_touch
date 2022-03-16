@@ -44,7 +44,25 @@ export class pageDivinity extends HTMLElement {
   }
    
   connectedCallback() {
+    
+    
+    const portraits = this.shadowRoot.querySelectorAll('divinity-portrait')
+    for(let portrait of portraits) portrait.addEventListener('click', () => {
+      this.shadowRoot.querySelector('divinity-header').style.transition = '500ms'
+      this.shadowRoot.querySelector('divinity-header').style.opacity = 0
+      setTimeout( () => {
+        this.shadowRoot.querySelector('divinity-header').remove()
+        
+        let newDivinity = document.createElement('divinity-header')
+        newDivinity.setAttribute('divinity', portrait.getAttribute('name').toLowerCase())
+        this.shadowRoot.appendChild(newDivinity)
+      }, 500)
+      
 
+
+     
+    })
+    
   }
 
 }
