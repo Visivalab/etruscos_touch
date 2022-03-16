@@ -209,7 +209,7 @@ connectedCallback() {
     this.setAttribute('details', '')
     
     /* Name transitions */
-    this.name.style.transition = '1s'
+    this.name.style.transition = '1500ms'
     this.name.style.left = '270px'
     this.name.style.top = '423px'
     this.name.style.fontSize = '72px'
@@ -232,7 +232,7 @@ connectedCallback() {
 
     /* Base image movement */
     let baseImage = this.shadowRoot.querySelector('.base_image')
-    baseImage.style.transition = '1s'
+    baseImage.style.transition = '2s'
     baseImage.style.left = '50%'
     baseImage.style.transform = 'translate(-50%)'
   }

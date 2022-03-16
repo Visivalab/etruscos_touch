@@ -22,15 +22,52 @@ template.innerHTML = `
       transition: 1s;
       opacity: 0;
     }
+    /*.divinity__list{
+      position: absolute;
+
+      width: 1395px;
+      height: 579px;
+      left: 268px;
+      top: 367px;
+
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: 1fr 1fr;
+      grid-template-areas:
+          "a b c d e f g"
+          "h i j k l m n";
+
+      transition: 1s;
+    }
+
+    divinity-portrait{ transition: 1s }
+    .divinity__list divinity-portrait:nth-child(1){ grid-area: b }
+    .divinity__list divinity-portrait:nth-child(2){ grid-area: d }
+    .divinity__list divinity-portrait:nth-child(3){ grid-area: f }
+    .divinity__list divinity-portrait:nth-child(4){ grid-area: h }
+    .divinity__list divinity-portrait:nth-child(5){ grid-area: j }
+    .divinity__list divinity-portrait:nth-child(6){ grid-area: l }
+    .divinity__list divinity-portrait:nth-child(7){ grid-area: n }
+
+    .divinity__list.divinity__list--bottom divinity-portrait:nth-child(1){ grid-area: h }
+    .divinity__list.divinity__list--bottom divinity-portrait:nth-child(2){ grid-area: i }
+    .divinity__list.divinity__list--bottom divinity-portrait:nth-child(3){ grid-area: j }
+    .divinity__list.divinity__list--bottom divinity-portrait:nth-child(4){ grid-area: k }
+    .divinity__list.divinity__list--bottom divinity-portrait:nth-child(5){ grid-area: l }
+    .divinity__list.divinity__list--bottom divinity-portrait:nth-child(6){ grid-area: m }
+    .divinity__list.divinity__list--bottom divinity-portrait:nth-child(7){ grid-area: n }
+    */
     .divinity__list{
         position: absolute;
         width: 1561px;
+        height: unset;
         left: 194px;
         top: 737px;
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
     }
+    
 </style>
 <div>
     <full-video></full-video>
@@ -64,6 +101,10 @@ export class pageDivinity extends HTMLElement {
       
       // Si aún hay el texto de intro, se esconde (la primera vez que se selecciona una divinidad vaya)
       intro?.classList.add('hide')
+
+      // Si las divinidades estan en mosaico, se ponen en fila abajo
+      let divinityList = this.shadowRoot.querySelector('.divinity__list')
+      divinityList.classList.add('divinity__list--bottom')
 
       // Si ya está cargada una divinidad, la esconde (y la elimina)
       let divinity = this.shadowRoot.querySelector('divinity-header')
