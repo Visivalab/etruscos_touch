@@ -9,6 +9,8 @@ template.innerHTML = `
     :host{
         display: flex;
         align-items: center;
+        opacity: 0;
+        transition: 1s;
     }
     div{
         display: flex;
@@ -26,8 +28,6 @@ template.innerHTML = `
         font-weight: 400;
         font-size: 184px;
         line-height: 248px;
-
-        transition: 1s ease;
     }
     .description{
         position: absolute;
@@ -43,18 +43,6 @@ template.innerHTML = `
         line-height: 38px;
 
         color: var(--primary-color);
-
-        transition: 1s;
-    }
-    :host([details]) .name{
-        left: 270px;
-        top: 423px;
-
-        font-size: 72px;
-        line-height: 97px;
-    }
-    :host([details]) .description{
-        opacity: 0;
     }
     .nameBox{
         position: absolute;
@@ -62,7 +50,6 @@ template.innerHTML = `
         height: 139px;
         background: rgba(221, 207, 173, 0.51);
         opacity: 0;
-        transition: 1s;
         padding: 20px;
         box-sizing: border-box;
     }
@@ -117,9 +104,6 @@ template.innerHTML = `
 
         color: var(--primary-color);
     }
-    :host([details]) .nameBox{
-        opacity: 1;
-    }
     .detailsBox{
         position: absolute;
         width: 718px;
@@ -131,7 +115,6 @@ template.innerHTML = `
         place-items: center;
 
         opacity: 0;
-        transition: 1s;
         background: rgba(221, 207, 173, 0.51);
     }
     .detailsBox p{
@@ -149,9 +132,6 @@ template.innerHTML = `
     .detailsBox p strong{
         color: black;
     }
-    :host([details]) .detailsBox{
-        opacity: 1;
-    }
 
     /* Images managment */
     .base_image, .zoomed_container{
@@ -160,8 +140,6 @@ template.innerHTML = `
         height: 701px;
         left: 1164px;
         top: 96px;
-
-        transition: 1s ease;
     }
     .zoomed_container{
         --clip-position: 0 0;
@@ -178,10 +156,6 @@ template.innerHTML = `
     .zoomed_container img{
         clip-path: circle(79px at var(--clip-position));
         transition: clip-path var(--clip-speed);
-    }
-    :host([details]) .base_image{
-        left: 50%;
-        transform: translate(-50%);
     }
 </style>
 <div>
@@ -218,7 +192,6 @@ export class divinityHeader extends HTMLElement {
 
 connectedCallback() {
     this.divinity = this.getAttribute('divinity')
-    console.log(this.divinity)
 
     this.name = this.shadowRoot.querySelector('.name')
     this.description = this.shadowRoot.querySelector('.description')
@@ -226,13 +199,42 @@ connectedCallback() {
     this.zoom = this.shadowRoot.querySelector('.zoomed_container')
 
     this.buildDivinity()
-    
-    setTimeout( () => this.transition(), 500 )
+
+    setTimeout( () => this.style.opacity = 1, 100 )
+    setTimeout( () => this.transition(), config.timings.presentation )
   }
 
   // Hace la transición a la segunda fase del layout
   transition(){
     this.setAttribute('details', '')
+    
+    /* Name transitions */
+    this.name.style.transition = '1s'
+    this.name.style.left = '270px'
+    this.name.style.top = '423px'
+    this.name.style.fontSize = '72px'
+    this.name.style.lineHeight = '97px'
+
+    /* Description transitions */
+    this.description.style.transition = '1s'
+    this.description.style.opacity = '0'
+
+    /* Name boxes transitions*/
+    for(let nameBox of this.shadowRoot.querySelectorAll('.nameBox')){
+        nameBox.style.transition = '1s'
+        nameBox.style.opacity = 1
+    }
+
+    /* Details box transition */
+    let detailsBox = this.shadowRoot.querySelector('.detailsBox')
+    detailsBox.style.transition = '1s'
+    detailsBox.style.opacity = 1
+
+    /* Base image movement */
+    let baseImage = this.shadowRoot.querySelector('.base_image')
+    baseImage.style.transition = '1s'
+    baseImage.style.left = '50%'
+    baseImage.style.transform = 'translate(-50%)'
   }
 
   // Rellena el contenido con la info de la bbdd
@@ -247,7 +249,7 @@ connectedCallback() {
   init_lens(){
     const zoom_details = db[this.divinity].zoom_details
 
-    setTimeout( () => this.zoom.classList.add('active'), 2000)
+    setTimeout( () => this.zoom.classList.add('active'), config.timings.presentation + config.timings.lensDelay)
 
     this.zoom.style.transform = `translate(${zoom_details[0].box_position[0]}px, ${zoom_details[0].box_position[1]}px) scale(1.3)`
     this.zoom.style.setProperty('--clip-position', `${zoom_details[0].lens_position[0]}px ${zoom_details[0].lens_position[1]}px`)
@@ -259,7 +261,7 @@ connectedCallback() {
             this.zoom.style.transform = `translate(${zoom_details[lens_iteration].box_position[0]}px, ${zoom_details[lens_iteration].box_position[1]}px) scale(1.3)`
             this.zoom.style.setProperty('--clip-position', `${zoom_details[lens_iteration].lens_position[0]}px ${zoom_details[lens_iteration].lens_position[1]}px`)
             if(zoom_details[lens_iteration+1]) this.moveLens(lens_iteration+1, zoom_details)
-        }, 4000)
+        }, config.timings.presentation + config.timings.lensDelay + config.timings.lensPause)
     }
 
 }

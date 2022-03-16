@@ -1,4 +1,9 @@
 export const db = {
+    "intro": {
+        "fr": "Découvrez les dieux étrusques et comparez-les aux dieux grecs et romains!",
+        "en": "EN text",
+        "es": "ES text",
+    },
     "fufluns": {
         "img": "/images/fufluns.png",
         "greek_name": "Dionysos",

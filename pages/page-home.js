@@ -42,7 +42,7 @@ export class pageHome extends HTMLElement {
         utils.closeComponent(this, { fade: true })
         
         // Carreguem la seguent pagina amb un fade més gordo
-        utils.openComponent('page-selector', { fade: true, time: 2000 })
+        utils.openComponent('page-divinity', { fade: true, time: 2000 })
         
     })
   }

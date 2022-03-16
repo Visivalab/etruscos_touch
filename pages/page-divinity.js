@@ -1,5 +1,5 @@
 import {config} from '../config.js';
-import * as utils from '../utils.js';
+import {db} from '../db.js'
 
 const template = document.createElement('template');
 template.innerHTML = `
@@ -10,7 +10,18 @@ template.innerHTML = `
       width: 100%;
       height: 100%;
     }
-
+    h1{
+      position: absolute;
+      width: 852px;
+      height: 330px;
+      left: 545px;
+      top: 165px;
+      text-align: center;
+    }
+    h1.hide{
+      transition: 1s;
+      opacity: 0;
+    }
     .divinity__list{
         position: absolute;
         width: 1561px;
@@ -22,7 +33,8 @@ template.innerHTML = `
     }
 </style>
 <div>
-    <divinity-header divinity="fufluns"></divinity-header>
+    <full-video></full-video>
+    <h1></h1>
     <div class="divinity__list">
         <divinity-portrait img="/images/fufluns-portrait.png" name="Fufluns"></divinity-portrait>
         <divinity-portrait img="/images/laran-portrait.png" name="Laran"></divinity-portrait>
@@ -44,25 +56,37 @@ export class pageDivinity extends HTMLElement {
   }
    
   connectedCallback() {
-    
+    let intro = this.shadowRoot.querySelector('h1')
+    intro.textContent = db['intro'][config.lang]
     
     const portraits = this.shadowRoot.querySelectorAll('divinity-portrait')
     for(let portrait of portraits) portrait.addEventListener('click', () => {
-      this.shadowRoot.querySelector('divinity-header').style.transition = '500ms'
-      this.shadowRoot.querySelector('divinity-header').style.opacity = 0
-      setTimeout( () => {
-        this.shadowRoot.querySelector('divinity-header').remove()
-        
-        let newDivinity = document.createElement('divinity-header')
-        newDivinity.setAttribute('divinity', portrait.getAttribute('name').toLowerCase())
-        this.shadowRoot.appendChild(newDivinity)
-      }, 500)
       
+      // Si aún hay el texto de intro, se esconde (la primera vez que se selecciona una divinidad vaya)
+      intro?.classList.add('hide')
 
+      // Si ya está cargada una divinidad, la esconde (y la elimina)
+      let divinity = this.shadowRoot.querySelector('divinity-header')
+      if(divinity){
+        divinity.style.transition = '500ms'
+        divinity.style.opacity = '0'
+        setTimeout( () => {
+          divinity.remove()
+        }, 500) 
+      }
 
-     
+      // Crea la nueva divinidad pulsada
+      setTimeout( () => {
+        this.createDivinity(portrait.getAttribute('name').toLowerCase())
+      }, 500)
     })
     
+  }
+
+  createDivinity(divinity){
+    let newDivinity = document.createElement('divinity-header')
+    newDivinity.setAttribute('divinity', divinity)
+    this.shadowRoot.appendChild(newDivinity)
   }
 
 }
