@@ -9,6 +9,7 @@ template.innerHTML = `
       position: absolute;
       width: 100%;
       height: 100%;
+      transition: 1s;
     }
     h1{
       position: absolute;
@@ -17,15 +18,20 @@ template.innerHTML = `
       left: 545px;
       top: 165px;
       text-align: center;
+      transition: 1s;
     }
     h1.hide{
-      transition: 1s;
       opacity: 0;
     }
     
     divinity-portrait{
       transition: 1s;
       position: absolute;
+      transform: none;
+    }
+    divinity-portrait.hide{
+      opacity: 0;
+      transform: translateY(10px)
     }
     divinity-portrait:nth-child(1){ left: 475px; bottom: 420px; }
     divinity-portrait[inList]:nth-child(1){ left: 219px; bottom: 55px; }
@@ -44,15 +50,15 @@ template.innerHTML = `
 </style>
 <div>
     <full-video></full-video>
-    <h1></h1>
+    <h1 class="hide"></h1>
     <div>
-      <divinity-portrait noName bigImg img="/images/fufluns-portrait.png" name="Fufluns"></divinity-portrait>
-      <divinity-portrait noName bigImg img="/images/laran-portrait.png" name="Laran"></divinity-portrait>
-      <divinity-portrait noName bigImg img="/images/menerva-portrait.png" name="Menerva"></divinity-portrait>
-      <divinity-portrait noName bigImg img="/images/tinia-portrait.png" name="Tinia"></divinity-portrait>
-      <divinity-portrait noName bigImg img="/images/turan-portrait.png" name="Turan"></divinity-portrait>
-      <divinity-portrait noName bigImg img="/images/turms-portrait.png" name="Turms"></divinity-portrait>
-      <divinity-portrait noName bigImg img="/images/uni-portrait.png" name="Uni"></divinity-portrait>
+      <divinity-portrait class="hide" noName bigImg img="/images/fufluns-portrait.png" name="Fufluns"></divinity-portrait>
+      <divinity-portrait class="hide" noName bigImg img="/images/laran-portrait.png" name="Laran"></divinity-portrait>
+      <divinity-portrait class="hide" noName bigImg img="/images/menerva-portrait.png" name="Menerva"></divinity-portrait>
+      <divinity-portrait class="hide" noName bigImg img="/images/tinia-portrait.png" name="Tinia"></divinity-portrait>
+      <divinity-portrait class="hide" noName bigImg img="/images/turan-portrait.png" name="Turan"></divinity-portrait>
+      <divinity-portrait class="hide" noName bigImg img="/images/turms-portrait.png" name="Turms"></divinity-portrait>
+      <divinity-portrait class="hide" noName bigImg img="/images/uni-portrait.png" name="Uni"></divinity-portrait>
     </div>
 </div>
 `;
@@ -67,9 +73,10 @@ export class pageDivinity extends HTMLElement {
    
   connectedCallback() {
     let intro = this.shadowRoot.querySelector('h1')
-    intro.textContent = db['intro'][config.lang]
-    
     const portraits = this.shadowRoot.querySelectorAll('divinity-portrait')
+    
+    /* Preparar eventos y contenido */
+    intro.textContent = db['intro'][config.lang]
     for(let portrait of portraits) portrait.addEventListener('click', () => {
       
       // Si aún hay el texto de intro, se esconde (la primera vez que se selecciona una divinidad vaya)
@@ -98,6 +105,20 @@ export class pageDivinity extends HTMLElement {
         this.createDivinity(portrait.getAttribute('name').toLowerCase())
       }, 500)
     })
+    
+    /* Mostrar las cosas cuando termina el video (hay que esperar un momento para que la duración del video se actualize) */
+    setTimeout(() => {
+      setTimeout(() => {
+        intro.classList.remove('hide')
+        
+        /* Los portraits aparecen cascada de opacidad */
+        for(let i=0; i<portraits.length; i++){
+          setTimeout( () => portraits[i].classList.remove('hide'), i*200)
+        }
+
+      }, config.timings.videoDuration*1000 + 500)
+    }, 100)
+
     
   }
 

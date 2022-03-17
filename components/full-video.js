@@ -33,8 +33,6 @@ export class video extends HTMLElement {
     super()
     this.attachShadow({ mode:'open' })
     this.shadowRoot.appendChild(template.content.cloneNode(true))
-    
-    this.duration = 0
   }
    
   connectedCallback() {
@@ -47,11 +45,11 @@ export class video extends HTMLElement {
     this.video.play()
     this.video.onloadedmetadata = () => {
 
-      this.duration = this.video.duration
+      config.timings.videoDuration = this.video.duration
       
       setTimeout( () => {
         this.hideVideo()
-      }, this.duration*1000 - config.timings.videoFadeOut)
+      }, config.timings.videoDuration*1000 - config.timings.videoFadeOut)
 
     }
     

@@ -265,14 +265,21 @@ connectedCallback() {
 
     this.zoom.style.transform = `translate(${zoom_details[0].box_position[0]}px, ${zoom_details[0].box_position[1]}px) scale(1.4)`
     this.zoom.style.setProperty('--clip-position', `${zoom_details[0].lens_position[0]}px ${zoom_details[0].lens_position[1]}px`)
-    if(config.max_lens_iterations > 1) this.moveLens(1, zoom_details)
+    this.moveLens(1, zoom_details)
     
   }
     moveLens(lens_iteration, zoom_details){
         setTimeout( () => {
+            /* Esconde la lupa cuando ya no hay mas posiciones */
+            if(!zoom_details[lens_iteration]){
+                this.zoom.style.opacity = 0
+                return
+            }
+            
             this.zoom.style.transform = `translate(${zoom_details[lens_iteration].box_position[0]}px, ${zoom_details[lens_iteration].box_position[1]}px) scale(1.4)`
             this.zoom.style.setProperty('--clip-position', `${zoom_details[lens_iteration].lens_position[0]}px ${zoom_details[lens_iteration].lens_position[1]}px`)
-            if(zoom_details[lens_iteration+1] && config.max_lens_iterations > lens_iteration) this.moveLens(lens_iteration+1, zoom_details)
+            this.moveLens(lens_iteration+1, zoom_details)
+            
         }, config.timings.presentation + config.timings.lensDelay + config.timings.lensPause)
     }
 
