@@ -58,7 +58,7 @@ template.innerHTML = `
         left: 244px;
         top: 239px;
     }
-    .nameBox--greek p:first-child{
+    .nameBox p:first-child{
         font-family: 'Roboto Condensed';
         font-style: normal;
         font-weight: 400;
@@ -68,7 +68,7 @@ template.innerHTML = `
 
         color: var(--primary-color);
     }
-    .nameBox--greek p:last-child{
+    .nameBox p:last-child{
         font-family: 'Cinzel';
         font-style: normal;
         font-weight: 400;
@@ -77,7 +77,6 @@ template.innerHTML = `
 
         color: var(--primary-color);
     }
-    
     .nameBox--etrusque{
         left: 244px;
         top: 386px;
@@ -85,25 +84,6 @@ template.innerHTML = `
     .nameBox--roman{
         left: 244px;
         top: 533px;
-    }
-    .nameBox--roman p:first-child{
-        font-family: 'Roboto Condensed';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 28px;
-        text-transform: uppercase;
-
-        color: var(--primary-color);
-    }
-    .nameBox--roman p:last-child{
-        font-family: 'Cinzel';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 72px;
-        line-height: 80px;
-
-        color: var(--primary-color);
     }
     .detailsBox{
         position: absolute;
@@ -167,7 +147,10 @@ template.innerHTML = `
     <p translate="greek">Greek</p>
     <p class="greekName">Greek name</p>
 </div>
-<div class="nameBox nameBox--etrusque"></div>
+<div class="nameBox nameBox--etrusque">
+    <p translate="etrusque">Étrusque</p>
+    <p></p>
+</div>
 <div class="nameBox nameBox--roman">
     <p translate="roman"></p>
     <p class="romanName">Roman name</p>

@@ -45,7 +45,7 @@ export class video extends HTMLElement {
     this.video.play()
     this.video.onloadedmetadata = () => {
 
-      config.timings.videoDuration = this.video.duration
+      if(config.timings.videoDuration == 0) config.timings.videoDuration = this.video.duration
       
       setTimeout( () => {
         this.hideVideo()

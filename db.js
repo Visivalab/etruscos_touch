@@ -14,6 +14,11 @@ export const db = {
             "fr": "Romain",
             "en": "Roman",
             "es": "Romano"
+        },
+        "etrusque": {
+            "fr": "Étrusque",
+            "en": "Etruscan",
+            "es": "Etrusco"
         }
     },
     "video": {

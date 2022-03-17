@@ -112,9 +112,11 @@ export class pageDivinity extends HTMLElement {
         intro.classList.remove('hide')
         
         /* Los portraits aparecen cascada de opacidad */
-        for(let i=0; i<portraits.length; i++){
-          setTimeout( () => portraits[i].classList.remove('hide'), i*200)
-        }
+        setTimeout(() => {
+          for(let i=0; i<portraits.length; i++){
+            setTimeout( () => portraits[i].classList.remove('hide'), i*200)
+          }
+        },500)
 
       }, config.timings.videoDuration*1000 + 500)
     }, 100)
