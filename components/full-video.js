@@ -22,7 +22,7 @@ template.innerHTML = `
   }
 </style>
 <div class="stop"></div>
-<video width="100%" height="100%" autoload controls>
+<video width="100%" height="100%" autoload>
     <source src="./videos/presentation_en.mp4" type="video/mp4">
 </video> 
 `;
