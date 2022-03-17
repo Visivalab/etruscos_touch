@@ -1,8 +1,9 @@
 export const config = {
     lang: 'es',
     timings: {
-        "presentation": 4000,
+        "presentation": 1000, // 4000
         "lensDelay": 2000,
-        "lensPause": 4000
-    }
+        "lensPause": 1000 // 3000
+    },
+    max_lens_iterations: 4
 }

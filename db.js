@@ -17,7 +17,7 @@ export const db = {
         }
     },
     "tinia": {
-        "img": "/images/fufluns.png",
+        "img": "/images/tinia.png",
         "greek_name": "Zeus",
         "etrusque_name": "Tinia",
         "roman_name": "Jupiter",
@@ -44,7 +44,7 @@ export const db = {
     },
 
     "uni": {
-        "img": "/images/fufluns.png",
+        "img": "/images/uni.png",
         "greek_name": "Héra",
         "etrusque_name": "Uni",
         "roman_name": "Juno",
@@ -71,7 +71,7 @@ export const db = {
     },
 
     "menerva": {
-        "img": "/images/fufluns.png",
+        "img": "/images/menerva.png",
         "greek_name": "Athénea",
         "etrusque_name": "Menerva",
         "roman_name": "Minerva",
@@ -98,7 +98,7 @@ export const db = {
     },
 
     "laran": {
-        "img": "/images/fufluns.png",
+        "img": "/images/laran.png",
         "greek_name": "Arès",
         "etrusque_name": "Laran",
         "roman_name": "Mars",
@@ -125,7 +125,7 @@ export const db = {
     },
 
     "turan": {
-        "img": "/images/fufluns.png",
+        "img": "/images/turan.png",
         "greek_name": "Aphrodite",
         "etrusque_name": "Turan",
         "roman_name": "Vénus",
@@ -152,7 +152,7 @@ export const db = {
     },
 
     "turms": {
-        "img": "/images/fufluns.png",
+        "img": "/images/turms.png",
         "greek_name": "Hermès",
         "etrusque_name": "Turms",
         "roman_name": "Mercure",
@@ -178,7 +178,7 @@ export const db = {
         ]
     },
 
-    "fufluns": {
+    "fufluns": { /* Finished */
         "img": "/images/fufluns.png",
         "greek_name": "Dionisos",
         "etrusque_name": "Fufluns",
@@ -196,11 +196,11 @@ export const db = {
         "zoom_details": [
             {
                 "lens_position": [80, 250],
-                "box_position": [-190, 20]
+                "box_position": [-182, 65]
             },
             {
-                "lens_position": [256, 159],
-                "box_position": [-190, 20]
+                "lens_position": [200, 100],
+                "box_position": [-182, 65]
             }
         ]
     }

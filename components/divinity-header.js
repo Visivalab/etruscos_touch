@@ -107,9 +107,9 @@ template.innerHTML = `
     }
     .detailsBox{
         position: absolute;
-        width: 718px;
+        width: 729px;
         height: 434px;
-        left: 955px;
+        left: 944px;
         top: 239px;
 
         display: grid;
@@ -137,8 +137,7 @@ template.innerHTML = `
     /* Images managment */
     .base_image, .zoomed_container{
         position: absolute;
-        width: 391px;
-        height: 701px;
+        height: 700px;
         left: 1164px;
         top: 96px;
     }
@@ -149,7 +148,7 @@ template.innerHTML = `
         background-color: var(--primary-color);
         left: 50%;
         opacity: 0;
-        transition: opacity 1s, clip-path var(--clip-speed);
+        transition: opacity 1s, clip-path var(--clip-speed), transform var(--clip-speed);
     }
     .zoomed_container.active{
         opacity: 1;
@@ -157,6 +156,7 @@ template.innerHTML = `
     .zoomed_container img{
         clip-path: circle(79px at var(--clip-position));
         transition: clip-path var(--clip-speed);
+        height: 100%;
     }
 </style>
 <div>
@@ -178,7 +178,7 @@ template.innerHTML = `
 </div>
 <img class="base_image" src="images/fufluns.png" />
 <div class="zoomed_container">
-    <img src="images/fufluns.png" />
+    <img class="lens_image" src="images/fufluns.png" />
 </div>
 `;
 
@@ -200,6 +200,8 @@ connectedCallback() {
     this.description = this.shadowRoot.querySelector('.description')
     this.longDescription = this.shadowRoot.querySelector('.detailsBox p')
     this.zoom = this.shadowRoot.querySelector('.zoomed_container')
+    this.image = this.shadowRoot.querySelector('.base_image')
+    this.lensImage = this.shadowRoot.querySelector('.lens_image')
 
     translate(this)
     
@@ -249,6 +251,9 @@ connectedCallback() {
       this.romanName.textContent = db[this.divinity].roman_name
       this.description.textContent = db[this.divinity].description[config.lang]
       this.longDescription.innerHTML = db[this.divinity].long_description[config.lang]
+      this.image.setAttribute('src', db[this.divinity].img)
+      this.lensImage.setAttribute('src', db[this.divinity].img)
+      
       this.init_lens()
   }
 
@@ -258,16 +263,16 @@ connectedCallback() {
 
     setTimeout( () => this.zoom.classList.add('active'), config.timings.presentation + config.timings.lensDelay)
 
-    this.zoom.style.transform = `translate(${zoom_details[0].box_position[0]}px, ${zoom_details[0].box_position[1]}px) scale(1.3)`
+    this.zoom.style.transform = `translate(${zoom_details[0].box_position[0]}px, ${zoom_details[0].box_position[1]}px) scale(1.4)`
     this.zoom.style.setProperty('--clip-position', `${zoom_details[0].lens_position[0]}px ${zoom_details[0].lens_position[1]}px`)
-    this.moveLens(1, zoom_details)
+    if(config.max_lens_iterations > 1) this.moveLens(1, zoom_details)
     
   }
     moveLens(lens_iteration, zoom_details){
         setTimeout( () => {
-            this.zoom.style.transform = `translate(${zoom_details[lens_iteration].box_position[0]}px, ${zoom_details[lens_iteration].box_position[1]}px) scale(1.3)`
+            this.zoom.style.transform = `translate(${zoom_details[lens_iteration].box_position[0]}px, ${zoom_details[lens_iteration].box_position[1]}px) scale(1.4)`
             this.zoom.style.setProperty('--clip-position', `${zoom_details[lens_iteration].lens_position[0]}px ${zoom_details[lens_iteration].lens_position[1]}px`)
-            if(zoom_details[lens_iteration+1]) this.moveLens(lens_iteration+1, zoom_details)
+            if(zoom_details[lens_iteration+1] && config.max_lens_iterations > lens_iteration) this.moveLens(lens_iteration+1, zoom_details)
         }, config.timings.presentation + config.timings.lensDelay + config.timings.lensPause)
     }
 
