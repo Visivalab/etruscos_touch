@@ -11,15 +11,39 @@ template.innerHTML = `
       height: 100%;
     }
 
+    img{
+      position: absolute;
+      left: 100px;
+      top: 224px;
+    }
     h1{
-        cursor: pointer;
+      background: url('./css/assets/icons/arrow.svg') no-repeat center right;
+      padding-right: 60px;
+    }
+    div h1:nth-child(1){
+      position: absolute;
+      top: 366px;
+      right: 223px;
+    }
+    div h1:nth-child(2){
+      position: absolute;
+      top: 452px;
+      right: 223px;
+    }
+    div h1:nth-child(3){
+      position: absolute;
+      top: 537px;
+      right: 223px;
     }
 
 </style>
 <div>
-    <h1 class="bold" data-lang="fr">Le Panthéon Étrusque</h1>
-    <h1 class="regular" data-lang="en">The Etruscan Pantheon</h1>
-    <h1 class="medium" data-lang="es">El Panteón Etrusco</h1>
+    <img src="./images/home.png" width="911px" />
+    <div>
+      <h1 class="bold" data-lang="fr">Le Panthéon Étrusque</h1>
+      <h1 class="regular" data-lang="en">The Etruscan Pantheon</h1>
+      <h1 class="medium" data-lang="es">El Panteón Etrusco</h1>
+    </div>
 </div>
 `;
 

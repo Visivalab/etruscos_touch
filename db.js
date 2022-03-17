@@ -4,6 +4,18 @@ export const db = {
         "en": "Discover the Etruscan gods and compare them to the Greek and Roman gods!",
         "es": "¡Descubre los dioses etruscos y compáralos con los dioses griegos y romanos!",
     },
+    "layout": {
+        "greek": {
+            "fr": "Grec",
+            "en": "Greek",
+            "es": "Griego"
+        },
+        "roman": {
+            "fr": "Romain",
+            "en": "Roman",
+            "es": "Romano"
+        }
+    },
     "tinia": {
         "img": "/images/fufluns.png",
         "greek_name": "Zeus",

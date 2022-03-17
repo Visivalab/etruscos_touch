@@ -1,5 +1,6 @@
 import {config} from '../config.js';
 import {db} from '../db.js'
+import {translate} from '../utils.js'
 
 const template = document.createElement('template');
 template.innerHTML = `
@@ -121,7 +122,7 @@ template.innerHTML = `
         margin-left: 60px;
         width: 431px;
 
-        font-family: 'Source Sans Pro';
+        font-family: 'SourceSansPro';
         font-style: normal;
         font-weight: 400;
         font-size: 24px;
@@ -163,12 +164,12 @@ template.innerHTML = `
     <p class="description">Divinity properties</p>
 </div>
 <div class="nameBox nameBox--greek">
-    <p>Greek</p>
+    <p translate="greek">Greek</p>
     <p class="greekName">Greek name</p>
 </div>
 <div class="nameBox nameBox--etrusque"></div>
 <div class="nameBox nameBox--roman">
-    <p>Roman</p>
+    <p translate="roman"></p>
     <p class="romanName">Roman name</p>
 </div>
 <div class="detailsBox">
@@ -200,13 +201,15 @@ connectedCallback() {
     this.longDescription = this.shadowRoot.querySelector('.detailsBox p')
     this.zoom = this.shadowRoot.querySelector('.zoomed_container')
 
+    translate(this)
+    
     this.buildDivinity()
 
     setTimeout( () => this.style.opacity = 1, 100 )
     setTimeout( () => this.transition(), config.timings.presentation )
-  }
+}
 
-  // Hace la transición a la segunda fase del layout
+// Hace la transición a la segunda fase del layout
   transition(){
     this.setAttribute('details', '')
     
