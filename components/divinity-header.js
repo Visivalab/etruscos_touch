@@ -194,6 +194,8 @@ connectedCallback() {
     this.divinity = this.getAttribute('divinity')
 
     this.name = this.shadowRoot.querySelector('.name')
+    this.greekName = this.shadowRoot.querySelector('.greekName')
+    this.romanName = this.shadowRoot.querySelector('.romanName')
     this.description = this.shadowRoot.querySelector('.description')
     this.longDescription = this.shadowRoot.querySelector('.detailsBox p')
     this.zoom = this.shadowRoot.querySelector('.zoomed_container')
@@ -240,6 +242,8 @@ connectedCallback() {
   // Rellena el contenido con la info de la bbdd
   buildDivinity(){
       this.name.textContent = db[this.divinity].etrusque_name
+      this.greekName.textContent = db[this.divinity].greek_name
+      this.romanName.textContent = db[this.divinity].roman_name
       this.description.textContent = db[this.divinity].description[config.lang]
       this.longDescription.innerHTML = db[this.divinity].long_description[config.lang]
       this.init_lens()

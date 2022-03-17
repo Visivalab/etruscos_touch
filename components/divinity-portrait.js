@@ -1,6 +1,3 @@
-import {config} from '../config.js';
-import * as utils from '../utils.js';
-
 const template = document.createElement('template');
 template.innerHTML = `
 <style>
@@ -8,6 +5,15 @@ template.innerHTML = `
 
     :host{
       position: relative;
+    }
+    :host([visibleTransitions]) p, :host([visibleTransitions]) img{
+      transition: 1s;
+    }
+    :host([noName]) p{
+      opacity: 0;
+    }
+    :host([bigImg]) img{
+      width: 150px;
     }
     .divinity__portrait--selected{
       position: absolute;

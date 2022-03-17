@@ -22,64 +22,37 @@ template.innerHTML = `
       transition: 1s;
       opacity: 0;
     }
-    /*.divinity__list{
-      position: absolute;
-
-      width: 1395px;
-      height: 579px;
-      left: 268px;
-      top: 367px;
-
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      grid-template-rows: 1fr 1fr;
-      grid-template-areas:
-          "a b c d e f g"
-          "h i j k l m n";
-
-      transition: 1s;
-    }
-
-    divinity-portrait{ transition: 1s }
-    .divinity__list divinity-portrait:nth-child(1){ grid-area: b }
-    .divinity__list divinity-portrait:nth-child(2){ grid-area: d }
-    .divinity__list divinity-portrait:nth-child(3){ grid-area: f }
-    .divinity__list divinity-portrait:nth-child(4){ grid-area: h }
-    .divinity__list divinity-portrait:nth-child(5){ grid-area: j }
-    .divinity__list divinity-portrait:nth-child(6){ grid-area: l }
-    .divinity__list divinity-portrait:nth-child(7){ grid-area: n }
-
-    .divinity__list.divinity__list--bottom divinity-portrait:nth-child(1){ grid-area: h }
-    .divinity__list.divinity__list--bottom divinity-portrait:nth-child(2){ grid-area: i }
-    .divinity__list.divinity__list--bottom divinity-portrait:nth-child(3){ grid-area: j }
-    .divinity__list.divinity__list--bottom divinity-portrait:nth-child(4){ grid-area: k }
-    .divinity__list.divinity__list--bottom divinity-portrait:nth-child(5){ grid-area: l }
-    .divinity__list.divinity__list--bottom divinity-portrait:nth-child(6){ grid-area: m }
-    .divinity__list.divinity__list--bottom divinity-portrait:nth-child(7){ grid-area: n }
-    */
-    .divinity__list{
-        position: absolute;
-        width: 1561px;
-        height: unset;
-        left: 194px;
-        top: 737px;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-    }
     
+    divinity-portrait{
+      transition: 1s;
+      position: absolute;
+    }
+    divinity-portrait:nth-child(1){ left: 475px; bottom: 420px; }
+    divinity-portrait[inList]:nth-child(1){ left: 219px; bottom: 55px; }
+    divinity-portrait:nth-child(2){ left: 886.88px; bottom: 420px; }
+    divinity-portrait[inList]:nth-child(2){ left: 453px; bottom: 55px; }
+    divinity-portrait:nth-child(3){ left: 1286.68px; bottom: 420px; }
+    divinity-portrait[inList]:nth-child(3){ left: 685px; bottom: 55px; }
+    divinity-portrait:nth-child(4){ left: 268px; bottom: 137px; }
+    divinity-portrait[inList]:nth-child(4){ left: 923px; bottom: 55px; }
+    divinity-portrait:nth-child(5){ left: 671.32px; bottom: 137px; }
+    divinity-portrait[inList]:nth-child(5){ left: 1164px; bottom: 55px; }
+    divinity-portrait:nth-child(6){ left: 1087.63px; bottom: 137px; }
+    divinity-portrait[inList]:nth-child(6){ left: 1402px; bottom: 55px; }
+    divinity-portrait:nth-child(7){ left: 1512.52px; bottom: 137px; }
+    divinity-portrait[inList]:nth-child(7){ left: 1637px; bottom: 55px; }
 </style>
 <div>
     <full-video></full-video>
     <h1></h1>
-    <div class="divinity__list">
-        <divinity-portrait img="/images/fufluns-portrait.png" name="Fufluns"></divinity-portrait>
-        <divinity-portrait img="/images/laran-portrait.png" name="Laran"></divinity-portrait>
-        <divinity-portrait img="/images/menerva-portrait.png" name="Menerva"></divinity-portrait>
-        <divinity-portrait img="/images/tinia-portrait.png" name="Tinia"></divinity-portrait>
-        <divinity-portrait img="/images/turan-portrait.png" name="Turan"></divinity-portrait>
-        <divinity-portrait img="/images/turms-portrait.png" name="Turms"></divinity-portrait>
-        <divinity-portrait img="/images/uni-portrait.png" name="Uni"></divinity-portrait>
+    <div>
+      <divinity-portrait noName bigImg img="/images/fufluns-portrait.png" name="Fufluns"></divinity-portrait>
+      <divinity-portrait noName bigImg img="/images/laran-portrait.png" name="Laran"></divinity-portrait>
+      <divinity-portrait noName bigImg img="/images/menerva-portrait.png" name="Menerva"></divinity-portrait>
+      <divinity-portrait noName bigImg img="/images/tinia-portrait.png" name="Tinia"></divinity-portrait>
+      <divinity-portrait noName bigImg img="/images/turan-portrait.png" name="Turan"></divinity-portrait>
+      <divinity-portrait noName bigImg img="/images/turms-portrait.png" name="Turms"></divinity-portrait>
+      <divinity-portrait noName bigImg img="/images/uni-portrait.png" name="Uni"></divinity-portrait>
     </div>
 </div>
 `;
@@ -103,8 +76,12 @@ export class pageDivinity extends HTMLElement {
       intro?.classList.add('hide')
 
       // Si las divinidades estan en mosaico, se ponen en fila abajo
-      let divinityList = this.shadowRoot.querySelector('.divinity__list')
-      divinityList.classList.add('divinity__list--bottom')
+      for(let portrait of portraits){
+        portrait.setAttribute('inList', '')
+        portrait.setAttribute('visibleTransitions', '')
+        portrait.removeAttribute('bigImg', '')
+        portrait.removeAttribute('noName', '')
+      }
 
       // Si ya está cargada una divinidad, la esconde (y la elimina)
       let divinity = this.shadowRoot.querySelector('divinity-header')
