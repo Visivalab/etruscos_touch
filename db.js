@@ -16,6 +16,11 @@ export const db = {
             "es": "Romano"
         }
     },
+    "video": {
+        "fr": "/videos/presentation_fr.mp4",
+        "en": "/videos/presentation_en.mp4",
+        "es": "/videos/presentation_es.mp4",
+    },
     "tinia": {
         "img": "/images/tinia.png",
         "greek_name": "Zeus",
@@ -87,17 +92,21 @@ export const db = {
         },
         "zoom_details": [
             {
-                "lens_position": [80, 250],
-                "box_position": [-190, 20]
+                "lens_position": [-210, 40],
+                "box_position": [200, 100]
             },
             {
-                "lens_position": [256, 159],
-                "box_position": [-190, 20]
+                "lens_position": [325, 180],
+                "box_position": [200, 100]
+            },
+            {
+                "lens_position": [120, 350],
+                "box_position": [200, 100]
             }
         ]
     },
 
-    "laran": {
+    "laran": { /* Finished */
         "img": "/images/laran.png",
         "greek_name": "Arès",
         "etrusque_name": "Laran",
@@ -114,12 +123,8 @@ export const db = {
         },
         "zoom_details": [
             {
-                "lens_position": [80, 250],
-                "box_position": [-190, 20]
-            },
-            {
-                "lens_position": [256, 159],
-                "box_position": [-190, 20]
+                "lens_position": [110, 140],
+                "box_position": [-187, 67]
             }
         ]
     },
