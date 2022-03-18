@@ -5,6 +5,6 @@ export const config = {
         "lensDelay": 2000,
         "lensPause": 1000, // 3000
         "videoFadeOut": 1000,
-        "videoDuration": 2 // No hace falta tocar, lo pilla automatico pero es necesario que se guarde para ser usado a través de componentes
+        "videoDuration": 2 // Si se deja en 0 detecta automaticamente la duración del video
     }
 }

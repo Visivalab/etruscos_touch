@@ -22,12 +22,13 @@ export const db = {
         }
     },
     "video": {
-        "fr": "/videos/presentation_fr.mp4",
-        "en": "/videos/presentation_en.mp4",
-        "es": "/videos/presentation_es.mp4",
+        "fr": "./assets/videos/presentation_fr.mp4",
+        "en": "./assets/videos/presentation_en.mp4",
+        "es": "./assets/videos/presentation_es.mp4",
     },
     "tinia": {
-        "img": "/images/tinia.png",
+        "img": "./assets/images/tinia.png",
+        "portrait_img": "./assets/images/tinia-portrait.png",
         "greek_name": "Zeus",
         "etrusque_name": "Tinia",
         "roman_name": "Jupiter",
@@ -54,7 +55,8 @@ export const db = {
     },
 
     "uni": {
-        "img": "/images/uni.png",
+        "img": "./assets/images/uni.png",
+        "portrait_img": "./assets/images/uni-portrait.png",
         "greek_name": "Héra",
         "etrusque_name": "Uni",
         "roman_name": "Juno",
@@ -81,7 +83,8 @@ export const db = {
     },
 
     "menerva": {
-        "img": "/images/menerva.png",
+        "img": "./assets/images/menerva.png",
+        "portrait_img": "./assets/images/menerva-portrait.png",
         "greek_name": "Athénea",
         "etrusque_name": "Menerva",
         "roman_name": "Minerva",
@@ -112,7 +115,8 @@ export const db = {
     },
 
     "laran": { /* Finished */
-        "img": "/images/laran.png",
+        "img": "./assets/images/laran.png",
+        "portrait_img": "./assets/images/laran-portrait.png",
         "greek_name": "Arès",
         "etrusque_name": "Laran",
         "roman_name": "Mars",
@@ -135,7 +139,8 @@ export const db = {
     },
 
     "turan": {
-        "img": "/images/turan.png",
+        "img": "./assets/images/turan.png",
+        "portrait_img": "./assets/images/turan-portrait.png",
         "greek_name": "Aphrodite",
         "etrusque_name": "Turan",
         "roman_name": "Vénus",
@@ -162,7 +167,8 @@ export const db = {
     },
 
     "turms": {
-        "img": "/images/turms.png",
+        "img": "./assets/images/turms.png",
+        "portrait_img": "./assets/images/turms-portrait.png",
         "greek_name": "Hermès",
         "etrusque_name": "Turms",
         "roman_name": "Mercure",
@@ -189,7 +195,8 @@ export const db = {
     },
 
     "fufluns": { /* Finished */
-        "img": "/images/fufluns.png",
+        "img": "./assets/images/fufluns.png",
+        "portrait_img": "./assets/images/fufluns-portrait.png",
         "greek_name": "Dionisos",
         "etrusque_name": "Fufluns",
         "roman_name": "Baco",

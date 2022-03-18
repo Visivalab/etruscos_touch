@@ -5,7 +5,7 @@ import {translate} from '../utils.js'
 const template = document.createElement('template');
 template.innerHTML = `
 <style>
-    @import 'css/style.css';
+    @import 'style.css';
 
     :host{
         display: flex;
@@ -29,6 +29,8 @@ template.innerHTML = `
         font-weight: 400;
         font-size: 184px;
         line-height: 248px;
+
+        color: white;
     }
     .description{
         position: absolute;
@@ -159,9 +161,9 @@ template.innerHTML = `
     <p></p>
 </div>
 </div>
-<img class="base_image" src="images/fufluns.png" />
+<img class="base_image" />
 <div class="zoomed_container">
-    <img class="lens_image" src="images/fufluns.png" />
+    <img class="lens_image" />
 </div>
 `;
 

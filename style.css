@@ -25,3 +25,18 @@
     src: url('./assets/fonts/sourceSansPro/SourceSansPro-Regular.ttf');
     font-weight: 400;
 }
+
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+}
+
+:root{
+    --background-color: #090808;
+    --primary-color: #DDCFAD;
+}
+body{
+    user-select: none;
+    margin: 0;
+    background-color: var(--background-color);
+    overflow: hidden;
+}

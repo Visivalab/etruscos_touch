@@ -1,7 +1,9 @@
+import {db} from '../db.js'
+
 const template = document.createElement('template');
 template.innerHTML = `
 <style>
-    @import 'css/style.css';
+    @import 'style.css';
 
     :host{
       position: relative;
@@ -41,6 +43,7 @@ template.innerHTML = `
       font-size: 24px;
       line-height: 32px;
       text-align: center;
+      color: white;
     }
 </style>
 
@@ -58,16 +61,14 @@ export class divinityPortrait extends HTMLElement {
     this.attachShadow({ mode:'open' })
     this.shadowRoot.appendChild(template.content.cloneNode(true))
 
-    this.image = this.getAttribute('img')
     this.name = this.getAttribute('name')
-
   }
    
   connectedCallback() {
     let nameSpace = this.shadowRoot.querySelector('p')
     let imageSpace = this.shadowRoot.querySelector('img')
     nameSpace.textContent = this.name
-    imageSpace.setAttribute('src', this.image)
+    imageSpace.setAttribute('src', db[this.name.toLowerCase()].portrait_img)
   }
 
 }

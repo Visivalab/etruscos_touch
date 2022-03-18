@@ -4,7 +4,6 @@ import {db} from '../db.js'
 const template = document.createElement('template');
 template.innerHTML = `
 <style>
-    @import 'css/style.css';
     :host{
       position: absolute;
       width: 100%;
@@ -12,6 +11,10 @@ template.innerHTML = `
       transition: 1s;
     }
     h1{
+      font-size: 64px;
+      font-family: 'Roboto Condensed';
+      color: var(--primary-color);
+
       position: absolute;
       width: 852px;
       height: 330px;
@@ -52,13 +55,13 @@ template.innerHTML = `
     <full-video></full-video>
     <h1 class="hide"></h1>
     <div>
-      <divinity-portrait class="hide" noName bigImg img="/images/fufluns-portrait.png" name="Fufluns"></divinity-portrait>
-      <divinity-portrait class="hide" noName bigImg img="/images/laran-portrait.png" name="Laran"></divinity-portrait>
-      <divinity-portrait class="hide" noName bigImg img="/images/menerva-portrait.png" name="Menerva"></divinity-portrait>
-      <divinity-portrait class="hide" noName bigImg img="/images/tinia-portrait.png" name="Tinia"></divinity-portrait>
-      <divinity-portrait class="hide" noName bigImg img="/images/turan-portrait.png" name="Turan"></divinity-portrait>
-      <divinity-portrait class="hide" noName bigImg img="/images/turms-portrait.png" name="Turms"></divinity-portrait>
-      <divinity-portrait class="hide" noName bigImg img="/images/uni-portrait.png" name="Uni"></divinity-portrait>
+      <divinity-portrait class="hide" noName bigImg name="Fufluns"></divinity-portrait>
+      <divinity-portrait class="hide" noName bigImg name="Laran"></divinity-portrait>
+      <divinity-portrait class="hide" noName bigImg name="Menerva"></divinity-portrait>
+      <divinity-portrait class="hide" noName bigImg name="Tinia"></divinity-portrait>
+      <divinity-portrait class="hide" noName bigImg name="Turan"></divinity-portrait>
+      <divinity-portrait class="hide" noName bigImg name="Turms"></divinity-portrait>
+      <divinity-portrait class="hide" noName bigImg name="Uni"></divinity-portrait>
     </div>
 </div>
 `;
