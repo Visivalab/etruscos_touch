@@ -23,6 +23,11 @@ template.innerHTML = `
       font-size: 64px;
       font-family: 'Roboto Condensed';
       color: var(--primary-color);
+      transition: 1s;
+    }
+    h1:hover{
+      transform: translateX(30px);
+      padding-right: 70px;
     }
     div h1:nth-child(1){
       position: absolute;
@@ -69,11 +74,14 @@ export class pageHome extends HTMLElement {
         // Guardem el lang seleccionat
         config.lang = ev.target.dataset.lang
 
-        // Eliminem la pagina actual amb una mica de fade
-        utils.closeComponent(this, { fade: true })
+        setTimeout( () => {
+          // Eliminem la pagina actual amb una mica de fade
+          utils.closeComponent(this, { fade: true })
+          // Carreguem la seguent pagina amb un fade més gordo
+          utils.openComponent('page-divinity', { fade: true, time: 2000 })
+        }, 700)
         
-        // Carreguem la seguent pagina amb un fade més gordo
-        utils.openComponent('page-divinity', { fade: true, time: 2000 })
+       
         
     })
   }

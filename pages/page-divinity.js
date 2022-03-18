@@ -1,5 +1,6 @@
 import {config} from '../config.js';
 import {db} from '../db.js'
+import * as utils from '../utils.js';
 
 const template = document.createElement('template');
 template.innerHTML = `
@@ -38,7 +39,7 @@ template.innerHTML = `
     .backHome.hide{
       opacity: 0;
     }
-    .backHome a{
+    .backHome p{
       font-family: 'Source Sans Pro';
       font-style: normal;
       font-weight: 400;
@@ -46,7 +47,6 @@ template.innerHTML = `
       line-height: 30px;
       text-align: right;
       color: #DDCFAD;
-      text-decoration: none;
     }
     .backHome img{
       margin-left: 15px;
@@ -80,7 +80,7 @@ template.innerHTML = `
     <full-video></full-video>
     <h1 class="hide"></h1>
     <div class="backHome hide">
-      <a href="./">Home</a>
+      <p>Home</p>
       <img src="./assets/icons/home.svg" width="33px" />
     </div>
     <div>
@@ -109,6 +109,14 @@ export class pageDivinity extends HTMLElement {
     const portraits = this.shadowRoot.querySelectorAll('divinity-portrait')
     
     /* Preparar eventos y contenido */
+    
+    backHome.addEventListener('click', () => {
+      // Eliminem la pagina actual amb una mica de fade
+      utils.closeComponent(this, { fade: true })
+      // Carreguem la seguent pagina amb un fade més gordo
+      utils.openComponent('page-home', { fade: true, time: 2000 })
+    })
+
     intro.textContent = db['intro'][config.lang]
     for(let portrait of portraits) portrait.addEventListener('click', () => {
       
