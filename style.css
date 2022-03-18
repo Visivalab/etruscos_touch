@@ -31,7 +31,7 @@ h1,h2,h3,h4,h5,h6,p{
 }
 
 :root{
-    --background-color: #090808;
+    --background-color: #090808; /*#090808*/
     --primary-color: #DDCFAD;
 }
 body{

@@ -44,12 +44,8 @@ export const db = {
         },
         "zoom_details": [
             {
-                "lens_position": [80, 250],
-                "box_position": [-190, 20]
-            },
-            {
-                "lens_position": [256, 159],
-                "box_position": [-190, 20]
+                "lens_position": [90, 320],
+                "box_position": [-170, 29]
             }
         ]
     },
@@ -72,12 +68,12 @@ export const db = {
         },
         "zoom_details": [
             {
-                "lens_position": [80, 250],
-                "box_position": [-190, 20]
+                "lens_position": [280, 109],
+                "box_position": [-267, 22]
             },
             {
-                "lens_position": [256, 159],
-                "box_position": [-190, 20]
+                "lens_position": [440, 310],
+                "box_position": [-267, 22]
             }
         ]
     },
@@ -100,21 +96,21 @@ export const db = {
         },
         "zoom_details": [
             {
-                "lens_position": [-210, 40],
-                "box_position": [200, 100]
+                "lens_position": [200, 100],
+                "box_position": [-200, 18]
             },
             {
                 "lens_position": [325, 180],
-                "box_position": [200, 100]
+                "box_position": [-200, 18]
             },
             {
-                "lens_position": [120, 350],
-                "box_position": [200, 100]
+                "lens_position": [105, 350],
+                "box_position": [-200, 18]
             }
         ]
     },
 
-    "laran": { /* Finished */
+    "laran": {
         "img": "./assets/images/laran.png",
         "portrait_img": "./assets/images/laran-portrait.png",
         "greek_name": "Arès",
@@ -133,7 +129,7 @@ export const db = {
         "zoom_details": [
             {
                 "lens_position": [110, 140],
-                "box_position": [-187, 67]
+                "box_position": [-187, 43]
             }
         ]
     },
@@ -156,12 +152,12 @@ export const db = {
         },
         "zoom_details": [
             {
-                "lens_position": [80, 250],
-                "box_position": [-190, 20]
+                "lens_position": [110, 210],
+                "box_position": [-240, 16]
             },
             {
-                "lens_position": [256, 159],
-                "box_position": [-190, 20]
+                "lens_position": [380, 210],
+                "box_position": [-240, 16]
             }
         ]
     },
@@ -184,17 +180,21 @@ export const db = {
         },
         "zoom_details": [
             {
-                "lens_position": [80, 250],
-                "box_position": [-190, 20]
+                "lens_position": [130, 90],
+                "box_position": [-168, -21]
             },
             {
-                "lens_position": [256, 159],
-                "box_position": [-190, 20]
+                "lens_position": [220, 280],
+                "box_position": [-168, -21]
+            },
+            {
+                "lens_position": [175, 600],
+                "box_position": [-168, -21]
             }
         ]
     },
 
-    "fufluns": { /* Finished */
+    "fufluns": {
         "img": "./assets/images/fufluns.png",
         "portrait_img": "./assets/images/fufluns-portrait.png",
         "greek_name": "Dionisos",
@@ -213,11 +213,11 @@ export const db = {
         "zoom_details": [
             {
                 "lens_position": [80, 250],
-                "box_position": [-182, 65]
+                "box_position": [-182, 42]
             },
             {
                 "lens_position": [200, 100],
-                "box_position": [-182, 65]
+                "box_position": [-182, 42]
             }
         ]
     }

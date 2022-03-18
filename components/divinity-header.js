@@ -248,7 +248,7 @@ connectedCallback() {
 
     setTimeout( () => this.zoom.classList.add('active'), config.timings.presentation + config.timings.lensDelay)
 
-    this.zoom.style.transform = `translate(${zoom_details[0].box_position[0]}px, ${zoom_details[0].box_position[1]}px) scale(1.4)`
+    this.zoom.style.transform = `translate(${zoom_details[0].box_position[0]}px, ${zoom_details[0].box_position[1]}px) scale(1.2)`
     this.zoom.style.setProperty('--clip-position', `${zoom_details[0].lens_position[0]}px ${zoom_details[0].lens_position[1]}px`)
     this.moveLens(1, zoom_details)
     
@@ -261,9 +261,9 @@ connectedCallback() {
                 return
             }
             
-            this.zoom.style.transform = `translate(${zoom_details[lens_iteration].box_position[0]}px, ${zoom_details[lens_iteration].box_position[1]}px) scale(1.4)`
+            this.zoom.style.transform = `translate(${zoom_details[lens_iteration].box_position[0]}px, ${zoom_details[lens_iteration].box_position[1]}px) scale(1.2)`
             this.zoom.style.setProperty('--clip-position', `${zoom_details[lens_iteration].lens_position[0]}px ${zoom_details[lens_iteration].lens_position[1]}px`)
-            this.moveLens(lens_iteration+1, zoom_details)
+            //this.moveLens(lens_iteration+1, zoom_details)
             
         }, config.timings.presentation + config.timings.lensDelay + config.timings.lensPause)
     }

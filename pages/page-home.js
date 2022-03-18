@@ -12,8 +12,10 @@ template.innerHTML = `
 
     img{
       position: absolute;
-      left: 100px;
-      top: 224px;
+      left: 110px;
+      top: 234px;
+      opacity: 0.7;
+      transform: scaleX(-1);
     }
     h1{
       background: url('./assets/icons/arrow.svg') no-repeat center right;
@@ -43,7 +45,7 @@ template.innerHTML = `
 
 </style>
 <div>
-    <img src="./assets/images/home.png" width="911px" />
+    <img src="./assets/images/home.jpg" width="800px" />
     <div>
       <h1 data-lang="fr">Le Panthéon Étrusque</h1>
       <h1 data-lang="en">The Etruscan Pantheon</h1>
