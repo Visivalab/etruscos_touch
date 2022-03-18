@@ -263,7 +263,7 @@ connectedCallback() {
             
             this.zoom.style.transform = `translate(${zoom_details[lens_iteration].box_position[0]}px, ${zoom_details[lens_iteration].box_position[1]}px) scale(1.2)`
             this.zoom.style.setProperty('--clip-position', `${zoom_details[lens_iteration].lens_position[0]}px ${zoom_details[lens_iteration].lens_position[1]}px`)
-            //this.moveLens(lens_iteration+1, zoom_details)
+            this.moveLens(lens_iteration+1, zoom_details)
             
         }, config.timings.presentation + config.timings.lensDelay + config.timings.lensPause)
     }

@@ -26,6 +26,26 @@ template.innerHTML = `
     h1.hide{
       opacity: 0;
     }
+    .backHome{
+      position: absolute;
+      left: 1747px;
+      top: 415px;
+      display: flex;
+      align-items: center;
+    }
+    .backHome a{
+      font-family: 'Source Sans Pro';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 30px;
+      text-align: right;
+      color: #DDCFAD;
+      text-decoration: none;
+    }
+    .backHome img{
+      margin-left: 15px;
+    }
     
     divinity-portrait{
       transition: 1s;
@@ -54,6 +74,10 @@ template.innerHTML = `
 <div>
     <full-video></full-video>
     <h1 class="hide"></h1>
+    <div class="backHome">
+      <a href="./">Home</a>
+      <img src="./assets/icons/home.svg" width="33px" />
+    </div>
     <div>
       <divinity-portrait class="hide" noName bigImg name="Fufluns"></divinity-portrait>
       <divinity-portrait class="hide" noName bigImg name="Laran"></divinity-portrait>

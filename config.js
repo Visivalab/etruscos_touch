@@ -6,5 +6,6 @@ export const config = {
         "lensPause": 1000, // 3000
         "videoFadeOut": 1000,
         "videoDuration": 2 // Si se deja en 0 detecta automaticamente la duración del video
-    }
+    },
+    screensaverTimer: 2000
 }
