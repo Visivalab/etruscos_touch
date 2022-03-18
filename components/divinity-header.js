@@ -202,7 +202,7 @@ connectedCallback() {
     
     /* Name transitions */
     this.name.style.transition = '1500ms'
-    this.name.style.left = '270px'
+    this.name.style.left = '263px'
     this.name.style.top = '423px'
     this.name.style.fontSize = '72px'
     this.name.style.lineHeight = '97px'

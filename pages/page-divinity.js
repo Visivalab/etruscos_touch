@@ -19,9 +19,10 @@ template.innerHTML = `
       width: 852px;
       height: 330px;
       left: 545px;
-      top: 165px;
+      top: 130px;
       text-align: center;
       transition: 1s;
+      margin: 0;
     }
     h1.hide{
       opacity: 0;
@@ -29,9 +30,13 @@ template.innerHTML = `
     .backHome{
       position: absolute;
       left: 1747px;
-      top: 415px;
+      top: 434px;
       display: flex;
       align-items: center;
+      transition: 1s;
+    }
+    .backHome.hide{
+      opacity: 0;
     }
     .backHome a{
       font-family: 'Source Sans Pro';
@@ -74,7 +79,7 @@ template.innerHTML = `
 <div>
     <full-video></full-video>
     <h1 class="hide"></h1>
-    <div class="backHome">
+    <div class="backHome hide">
       <a href="./">Home</a>
       <img src="./assets/icons/home.svg" width="33px" />
     </div>
@@ -100,6 +105,7 @@ export class pageDivinity extends HTMLElement {
    
   connectedCallback() {
     let intro = this.shadowRoot.querySelector('h1')
+    let backHome = this.shadowRoot.querySelector('.backHome')
     const portraits = this.shadowRoot.querySelectorAll('divinity-portrait')
     
     /* Preparar eventos y contenido */
@@ -137,7 +143,7 @@ export class pageDivinity extends HTMLElement {
     setTimeout(() => {
       setTimeout(() => {
         intro.classList.remove('hide')
-        
+        backHome.classList.remove('hide')
         /* Los portraits aparecen cascada de opacidad */
         setTimeout(() => {
           for(let i=0; i<portraits.length; i++){

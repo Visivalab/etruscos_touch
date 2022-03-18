@@ -9,10 +9,13 @@ template.innerHTML = `
     height: 100%;
     z-index: 3;
   }
+  :host([hidden]){
+      display: none;
+  }
   video{
     object-fit: cover;
     opacity: 0;
-    transition: 1s
+    transition: 500ms
   }
 </style>
 <video width="100%" height="100%" autoload loop>
@@ -33,7 +36,18 @@ export class screensaver extends HTMLElement {
   connectedCallback() {
     this.video = this.shadowRoot.querySelector('video')
 
+    /* Los navegadores no permiten autostart en un video si el usuario no ha interaccionado
+    con la pagina, por esto:
+    Cuando el usuario interacciona pulsando en cualquier lado, guardamos en la sesion un true y iniciamos el timer
+    Si no hay este true en la sesion, no salta el salvapantallas (porque se veria un video pausado sin mas)
+    Si hay el true, osea se ha interaccionado en esta sesion, empieza a contar a la que se carga la pagina (cuando se vuelve a la home desde otro lado)
+    Lo unico negativo es que para que el salvapantallas empiece a funcionar hay que pulsar en algun lado para que 
+    detecte que hay interacción y empiece todo.
+    */
+    if(sessionStorage.getItem('interacted') === 'true') this.restartTimer()
+
     document.addEventListener('click', () => {
+        sessionStorage.setItem('interacted', 'true')
         this.restartTimer()
     })
 
@@ -55,12 +69,12 @@ export class screensaver extends HTMLElement {
     this.video.style.opacity = 0
     setTimeout( () => {
         this.video.currentTime = 0
-        this.style.display = 'none'
-    },1000)
+        this.setAttribute('hidden','')
+    },500)
   }
 
   showScreensaver(){
-    this.style.display = 'block'
+      this.removeAttribute('hidden')
       setTimeout( () => {
           this.video.style.opacity = 1
       }, 0)
