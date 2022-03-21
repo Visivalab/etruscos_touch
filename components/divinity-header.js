@@ -110,7 +110,7 @@ template.innerHTML = `
         font-weight: 400;
         font-size: 24px;
         line-height: 30px;
-
+        z-index: 1;
         color: white;
     }
     .detailsBox p strong{
