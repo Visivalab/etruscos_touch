@@ -10,7 +10,6 @@ template.innerHTML = `
     :host{
         display: flex;
         align-items: center;
-        opacity: 0;
         transition: 1s;
     }
     div{
@@ -31,6 +30,7 @@ template.innerHTML = `
         line-height: 248px;
 
         color: white;
+        opacity: 0;
     }
     .description{
         position: absolute;
@@ -46,10 +46,11 @@ template.innerHTML = `
         line-height: 38px;
 
         color: var(--primary-color);
+        opacity: 0;
     }
     .nameBox{
         position: absolute;
-        width: 692px;
+        width: 0;
         height: 139px;
         background: rgba(221, 207, 173, 0.51);
         opacity: 0;
@@ -117,6 +118,9 @@ template.innerHTML = `
     }
 
     /* Images managment */
+    .base_image{
+        opacity: 0;
+    }
     .base_image, .zoomed_container{
         position: absolute;
         height: 700px;
@@ -187,14 +191,37 @@ connectedCallback() {
     this.zoom = this.shadowRoot.querySelector('.zoomed_container')
     this.image = this.shadowRoot.querySelector('.base_image')
     this.lensImage = this.shadowRoot.querySelector('.lens_image')
-
+    this.nameBoxes = this.shadowRoot.querySelectorAll('.nameBox')
+    this.baseImage = this.shadowRoot.querySelector('.base_image')
+    this.detailsBox = this.shadowRoot.querySelector('.detailsBox')
+    
     translate(this)
     
     this.buildDivinity()
 
-    setTimeout( () => this.style.opacity = 1, 100 )
+    setTimeout( () => this.showUp(), 100 )
     setTimeout( () => this.transition(), config.timings.presentation )
 }
+// Aparición de la primera fase del layout
+    showUp(){
+        this.baseImage.style.transform = 'scale(0.95)'
+        this.name.style.transform = 'scale(0.95)'
+        setTimeout( () => {
+            this.name.style.transform = 'scale(1)'
+            this.name.style.transition = '2s'
+            this.name.style.opacity = 1
+        },300)
+        setTimeout( () => {
+            this.baseImage.style.transform = 'scale(1)'
+            this.baseImage.style.transition = '2s'
+            this.baseImage.style.opacity = 1
+        },300)
+        setTimeout( () => {
+            this.description.style.transition = '2s'
+            this.description.style.opacity = 1
+        },1500)
+        
+    }
 
 // Hace la transición a la segunda fase del layout
   transition(){
@@ -212,21 +239,28 @@ connectedCallback() {
     this.description.style.opacity = '0'
 
     /* Name boxes transitions*/
-    for(let nameBox of this.shadowRoot.querySelectorAll('.nameBox')){
-        nameBox.style.transition = '1s'
-        nameBox.style.opacity = 1
-    }
+    this.nameBoxes[1].style.transition = '2s'
+    this.nameBoxes[1].style.width = '692px'
+    this.nameBoxes[1].style.opacity = 1
+    this.nameBoxes[0].style.width = '692px'
+    this.nameBoxes[2].style.width = '692px'
+    setTimeout( () => {
+        this.nameBoxes[0].style.transition = '2s'
+        this.nameBoxes[0].style.opacity = 1
+        this.nameBoxes[2].style.transition = '2s'
+        this.nameBoxes[2].style.opacity = 1
+    }, 1200 )
 
     /* Details box transition */
-    let detailsBox = this.shadowRoot.querySelector('.detailsBox')
-    detailsBox.style.transition = '1s'
-    detailsBox.style.opacity = 1
+    setTimeout( () => {
+        this.detailsBox.style.transition = '1s'
+        this.detailsBox.style.opacity = 1
+    }, 1500 )
 
     /* Base image movement */
-    let baseImage = this.shadowRoot.querySelector('.base_image')
-    baseImage.style.transition = '2s'
-    baseImage.style.left = '50%'
-    baseImage.style.transform = 'translate(-50%)'
+    this.baseImage.style.transition = '2s'
+    this.baseImage.style.left = '50%'
+    this.baseImage.style.transform = 'translate(-50%)'
   }
 
   // Rellena el contenido con la info de la bbdd
@@ -250,7 +284,9 @@ connectedCallback() {
 
     this.zoom.style.transform = `translate(${zoom_details[0].box_position[0]}px, ${zoom_details[0].box_position[1]}px) scale(1.2)`
     this.zoom.style.setProperty('--clip-position', `${zoom_details[0].lens_position[0]}px ${zoom_details[0].lens_position[1]}px`)
-    this.moveLens(1, zoom_details)
+    setTimeout( () => {
+        this.moveLens(1, zoom_details)
+    }, config.timings.presentation + config.timings.lensDelay)
     
   }
     moveLens(lens_iteration, zoom_details){
@@ -265,7 +301,7 @@ connectedCallback() {
             this.zoom.style.setProperty('--clip-position', `${zoom_details[lens_iteration].lens_position[0]}px ${zoom_details[lens_iteration].lens_position[1]}px`)
             this.moveLens(lens_iteration+1, zoom_details)
             
-        }, config.timings.presentation + config.timings.lensDelay + config.timings.lensPause)
+        }, config.timings.lensPause)
     }
 
 }
