@@ -208,7 +208,7 @@ connectedCallback() {
     
     this.buildDivinity()
 
-    setTimeout( () => this.showUp(), 500 )
+    setTimeout( () => this.showUp(), 800 )
     setTimeout( () => this.transition(), config.timings.presentation )
 }
 // Aparición de la primera fase del layout
@@ -222,7 +222,7 @@ connectedCallback() {
         },300)
         setTimeout( () => {
             this.baseImage.style.transform = 'scale(1)'
-            this.baseImage.style.transition = '2s'
+            this.baseImage.style.transition = '4s'
             this.baseImage.style.opacity = 1
         },300)
         setTimeout( () => {
