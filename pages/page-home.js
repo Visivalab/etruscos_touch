@@ -8,6 +8,8 @@ template.innerHTML = `
       position: absolute;
       width: 100%;
       height: 100%;
+      opacity: 0;
+      transition: 1s;
     }
 
     img{
@@ -69,19 +71,25 @@ export class pageHome extends HTMLElement {
    
   connectedCallback() {
     const langs = this.shadowRoot.querySelectorAll('h1')
+
+    /* Show up */
+    setTimeout( () => this.style.opacity = 1, 1000)
+
+
     for(let lang of langs) lang.addEventListener('click', ev => {
 
         // Guardem el lang seleccionat
         config.lang = ev.target.dataset.lang
 
-        setTimeout( () => {
-          // Eliminem la pagina actual amb una mica de fade
-          utils.closeComponent(this, { fade: true })
-          // Carreguem la seguent pagina amb un fade més gordo
-          utils.openComponent('page-divinity', { fade: true, time: 2000 })
-        }, 700)
+
+        // Eliminem la pagina actual amb una mica de fade
+        setTimeout( () => this.style.opacity = 0, 500)
+        setTimeout( () => this.remove(), 1000)
         
-       
+
+        // Cargamos la siguiente
+        let inner = document.createElement('page-divinity')
+        document.querySelector('body').appendChild(inner)   
         
     })
   }

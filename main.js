@@ -6,5 +6,8 @@ import './components/divinity-portrait.js'
 import './components/divinity-header.js'
 import './components/screen-saver.js'
 
-// Disable right click
+
+/** Desactiva el click derecho
+ * Previene que los usuarios puedan hacer cosas chungas pulsando la pantalla
+ */
 //document.addEventListener('contextmenu', event => event.preventDefault());

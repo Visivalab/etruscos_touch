@@ -18,7 +18,7 @@ template.innerHTML = `
         opacity: 0;
     }
     :host([fadingOut]) .base_image, :host([fadingOut]) .zoomed_container{
-        margin-left: -150px;
+        margin-left: -200px;
         transition: 1200ms ease;
     }
     div{

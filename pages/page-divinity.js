@@ -9,6 +9,7 @@ template.innerHTML = `
       position: absolute;
       width: 100%;
       height: 100%;
+      opacity: 0;
       transition: 1s;
     }
     h1{
@@ -108,13 +109,21 @@ export class pageDivinity extends HTMLElement {
     let backHome = this.shadowRoot.querySelector('.backHome')
     const portraits = this.shadowRoot.querySelectorAll('divinity-portrait')
     
+    /* Show up */
+    setTimeout( () => this.style.opacity = 1, 500)
+
     /* Preparar eventos y contenido */
     
     backHome.addEventListener('click', () => {
+      
       // Eliminem la pagina actual amb una mica de fade
-      utils.closeComponent(this, { fade: true })
-      // Carreguem la seguent pagina amb un fade més gordo
-      utils.openComponent('page-home', { fade: true, time: 2000 })
+      this.style.opacity = 0
+      setTimeout( () => this.remove(), 1000)
+
+      // Cargamos la siguiente
+      let inner = document.createElement('page-home')
+      document.querySelector('body').appendChild(inner)
+
     })
 
     intro.textContent = db['intro'][config.lang]
