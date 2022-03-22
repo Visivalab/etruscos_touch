@@ -136,12 +136,10 @@ export class pageDivinity extends HTMLElement {
       let divinityHeaders = this.shadowRoot.querySelectorAll('divinity-header')
       if(divinityHeaders){
         for(let divinityHeader of divinityHeaders){
-          divinityHeader.style.transition = 'transform 1200ms ease, opacity 800ms 100ms'
-          divinityHeader.style.transform = 'translateX(-200px)'
-          divinityHeader.style.opacity = '0'
+          divinityHeader.setAttribute('fadingOut', '')
           setTimeout( () => {
             divinityHeader.remove()
-          }, 900)
+          }, 1000)
         }
       }
 

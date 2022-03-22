@@ -12,6 +12,15 @@ template.innerHTML = `
         align-items: center;
         transition: 1s;
     }
+    :host([fadingOut]){
+        transition: transform 1200ms ease, opacity 800ms 100ms;
+        transform: translateX(-200px);
+        opacity: 0;
+    }
+    :host([fadingOut]) .base_image, :host([fadingOut]) .zoomed_container{
+        margin-left: -150px;
+        transition: 1200ms ease;
+    }
     div{
         display: flex;
         flex-direction: column;
