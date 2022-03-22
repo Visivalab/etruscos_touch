@@ -9,7 +9,6 @@ template.innerHTML = `
       width: 100%;
       height: 100%;
       opacity: 0;
-      transition: 1s;
     }
 
     img{
@@ -73,7 +72,10 @@ export class pageHome extends HTMLElement {
     const langs = this.shadowRoot.querySelectorAll('h1')
 
     /* Show up */
-    setTimeout( () => this.style.opacity = 1, 1000)
+    setTimeout( () => {
+      this.style.opacity = 1
+      this.style.transition = '1000ms'
+    }, 1000)
 
 
     for(let lang of langs) lang.addEventListener('click', ev => {
