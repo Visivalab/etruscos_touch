@@ -132,19 +132,21 @@ export class pageDivinity extends HTMLElement {
       }
 
       // Si ya está cargada una divinidad, la esconde (y la elimina)
-      let divinity = this.shadowRoot.querySelector('divinity-header')
-      if(divinity){
-        divinity.style.transition = '500ms'
-        divinity.style.opacity = '0'
-        setTimeout( () => {
-          divinity.remove()
-        }, 500) 
+      // Cubrimos el posible caso de que haya varios divinity-header (los usuarios libres consiguen cualquier cosa)
+      let divinityHeaders = this.shadowRoot.querySelectorAll('divinity-header')
+      if(divinityHeaders){
+        for(let divinityHeader of divinityHeaders){
+          divinityHeader.style.transition = 'transform 1200ms ease, opacity 800ms 100ms'
+          divinityHeader.style.transform = 'translateX(-200px)'
+          divinityHeader.style.opacity = '0'
+          setTimeout( () => {
+            divinityHeader.remove()
+          }, 900)
+        }
       }
 
       // Crea la nueva divinidad pulsada
-      setTimeout( () => {
-        this.createDivinity(portrait.getAttribute('name').toLowerCase())
-      }, 500)
+      this.createDivinity(portrait.getAttribute('name').toLowerCase())
     })
     
     /* Mostrar las cosas cuando termina el video (hay que esperar un momento para que la duración del video se actualize) */

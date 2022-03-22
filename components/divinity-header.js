@@ -199,7 +199,7 @@ connectedCallback() {
     
     this.buildDivinity()
 
-    setTimeout( () => this.showUp(), 100 )
+    setTimeout( () => this.showUp(), 500 )
     setTimeout( () => this.transition(), config.timings.presentation )
 }
 // Aparición de la primera fase del layout
