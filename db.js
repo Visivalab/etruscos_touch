@@ -19,6 +19,11 @@ export const db = {
             "fr": "Étrusque",
             "en": "Etruscan",
             "es": "Etrusco"
+        },
+        "home": {
+            "fr": "Home",
+            "en": "Home",
+            "es": "Inicio"
         }
     },
     "video": {

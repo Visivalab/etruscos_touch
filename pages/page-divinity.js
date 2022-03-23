@@ -1,6 +1,6 @@
 import {config} from '../config.js';
 import {db} from '../db.js'
-import * as utils from '../utils.js';
+import {translate} from '../utils.js';
 
 const template = document.createElement('template');
 template.innerHTML = `
@@ -81,7 +81,7 @@ template.innerHTML = `
     <full-video></full-video>
     <h1 class="hide"></h1>
     <div class="backHome hide">
-      <p>Home</p>
+      <p translate="home">Home</p>
       <img src="./assets/icons/home.svg" width="33px" />
     </div>
     <div>
@@ -105,6 +105,8 @@ export class pageDivinity extends HTMLElement {
   }
    
   connectedCallback() {
+    translate(this)
+
     let intro = this.shadowRoot.querySelector('h1')
     let backHome = this.shadowRoot.querySelector('.backHome')
     const portraits = this.shadowRoot.querySelectorAll('divinity-portrait')
