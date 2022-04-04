@@ -85,13 +85,13 @@ template.innerHTML = `
       <img src="./assets/icons/home.svg" width="33px" />
     </div>
     <div>
-      <divinity-portrait class="hide" noName bigImg name="Fufluns"></divinity-portrait>
-      <divinity-portrait class="hide" noName bigImg name="Laran"></divinity-portrait>
-      <divinity-portrait class="hide" noName bigImg name="Menerva"></divinity-portrait>
-      <divinity-portrait class="hide" noName bigImg name="Tinia"></divinity-portrait>
-      <divinity-portrait class="hide" noName bigImg name="Turan"></divinity-portrait>
-      <divinity-portrait class="hide" noName bigImg name="Turms"></divinity-portrait>
-      <divinity-portrait class="hide" noName bigImg name="Uni"></divinity-portrait>
+      <divinity-portrait class="hide" bigImg name="Fufluns"></divinity-portrait>
+      <divinity-portrait class="hide" bigImg name="Laran"></divinity-portrait>
+      <divinity-portrait class="hide" bigImg name="Menerva"></divinity-portrait>
+      <divinity-portrait class="hide" bigImg name="Tinia"></divinity-portrait>
+      <divinity-portrait class="hide" bigImg name="Turan"></divinity-portrait>
+      <divinity-portrait class="hide" bigImg name="Turms"></divinity-portrait>
+      <divinity-portrait class="hide" bigImg name="Uni"></divinity-portrait>
     </div>
 </div>
 `;
