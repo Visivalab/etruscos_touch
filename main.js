@@ -10,4 +10,4 @@ import './components/screen-saver.js'
 /** Desactiva el click derecho
  * Previene que los usuarios puedan hacer cosas chungas pulsando la pantalla
  */
-//document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener('contextmenu', event => event.preventDefault())
