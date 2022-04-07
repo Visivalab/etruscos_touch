@@ -16,6 +16,7 @@ template.innerHTML = `
       font-size: 64px;
       font-family: 'Roboto Condensed';
       color: var(--primary-color);
+      line-height: 60px;
 
       position: absolute;
       width: 852px;
@@ -47,7 +48,7 @@ template.innerHTML = `
       font-size: 24px;
       line-height: 30px;
       text-align: right;
-      color: #DDCFAD;
+      color: var(--primary-color);
     }
     .backHome img{
       margin-left: 15px;
@@ -102,21 +103,30 @@ export class pageDivinity extends HTMLElement {
     super()
     this.attachShadow({ mode:'open' })
     this.shadowRoot.appendChild(template.content.cloneNode(true))
+
+    this.layoutAppeared = false
+    this.intro = null
+    this.backHome = null
+    this.portraits = null
   }
    
   connectedCallback() {
     translate(this)
 
-    let intro = this.shadowRoot.querySelector('h1')
-    let backHome = this.shadowRoot.querySelector('.backHome')
-    const portraits = this.shadowRoot.querySelectorAll('divinity-portrait')
+    this.intro = this.shadowRoot.querySelector('h1')
+    this.backHome = this.shadowRoot.querySelector('.backHome')
+    this.portraits = this.shadowRoot.querySelectorAll('divinity-portrait')
     
     /* Show up */
     setTimeout( () => this.style.opacity = 1, 500)
 
     /* Preparar eventos y contenido */
     
-    backHome.addEventListener('click', () => {
+    this.shadowRoot.querySelector('full-video').addEventListener('stop', ev => {
+      if(this.layoutAppeared === false) this.showLayout()
+    })
+
+    this.backHome.addEventListener('click', () => {
       
       // Eliminem la pagina actual amb una mica de fade
       this.style.opacity = 0
@@ -128,14 +138,14 @@ export class pageDivinity extends HTMLElement {
 
     })
 
-    intro.textContent = db['intro'][config.lang]
-    for(let portrait of portraits) portrait.addEventListener('click', () => {
+    this.intro.textContent = db['intro'][config.lang]
+    for(let portrait of this.portraits) portrait.addEventListener('click', () => {
       
       // Si aún hay el texto de intro, se esconde (la primera vez que se selecciona una divinidad vaya)
-      intro?.classList.add('hide')
+      this.intro?.classList.add('hide')
 
       // Si las divinidades estan en mosaico, se ponen en fila abajo
-      for(let portrait of portraits){
+      for(let portrait of this.portraits){
         portrait.setAttribute('inList', '')
         portrait.setAttribute('visibleTransitions', '')
         portrait.removeAttribute('bigImg', '')
@@ -161,19 +171,23 @@ export class pageDivinity extends HTMLElement {
     /* Mostrar las cosas cuando termina el video (hay que esperar un momento para que la duración del video se actualize) */
     setTimeout(() => {
       setTimeout(() => {
-        intro.classList.remove('hide')
-        backHome.classList.remove('hide')
-        /* Los portraits aparecen cascada de opacidad */
-        setTimeout(() => {
-          for(let i=0; i<portraits.length; i++){
-            setTimeout( () => portraits[i].classList.remove('hide'), i*200)
-          }
-        },500)
-
+        if(this.layoutAppeared === false) this.showLayout()
       }, config.timings.videoDuration*1000 + 500)
     }, 100)
 
     
+  }
+
+  showLayout(){
+    this.layoutAppeared = true
+    this.intro.classList.remove('hide')
+    this.backHome.classList.remove('hide')
+    /* Los portraits aparecen cascada de opacidad */
+    setTimeout(() => {
+      for(let i=0; i<this.portraits.length; i++){
+        setTimeout( () => this.portraits[i].classList.remove('hide'), i*200)
+      }
+    },500)
   }
 
   createDivinity(divinity){

@@ -61,7 +61,7 @@ template.innerHTML = `
         position: absolute;
         width: 0;
         height: 139px;
-        background: rgba(221, 207, 173, 0.51);
+        background: var(--primary-color-transp);
         opacity: 0;
         padding: 20px;
         box-sizing: border-box;
@@ -108,7 +108,7 @@ template.innerHTML = `
         place-items: center;
 
         opacity: 0;
-        background: rgba(221, 207, 173, 0.51);
+        background: var(--primary-color-transp);
     }
     .detailsBox p{
         margin-left: 60px;

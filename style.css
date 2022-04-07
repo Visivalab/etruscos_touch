@@ -32,7 +32,9 @@ h1,h2,h3,h4,h5,h6,p{
 
 :root{
     --background-color: #090808; /*#090808*/
-    --primary-color: #DDCFAD;
+    --primary-color: #cdba8c; /*Original: DDCFAD*/
+    --primary-color-transp: rgba(205,186,140,0.5); /*rgba(221, 207, 173, 0.50);*/
+
 }
 body{
     user-select: none;

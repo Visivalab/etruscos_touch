@@ -54,7 +54,14 @@ export class video extends HTMLElement {
     }
     
     // Per testing, es pot tancar clicant a dalt a la dreta
-    this.shadowRoot.querySelector('.stop').addEventListener('click', () => this.remove())
+    this.shadowRoot.querySelector('.stop').addEventListener('click', () => {
+      this.dispatchEvent(new CustomEvent('stop',{
+        bubbles: true,
+        composed: true
+      }))
+      
+      this.hideVideo()
+    })
   }
 
   hideVideo(){

@@ -27,11 +27,12 @@ template.innerHTML = `
       transition: opacity 0.2s, transform 0.6s;
       opacity: 0;
       border-radius: 100%;
-      background-color: var(--primary-color);
+      /*background-color: var(--primary-color);*/
+      background-color: #FFFFFF;
     }
     .divinity__portrait:hover .divinity__portrait--selected{
       transform: scale(1.7);
-      opacity: 0.5;
+      opacity: 0.3;
     }
     img{
       width: 114.97px;
