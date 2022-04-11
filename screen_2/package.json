@@ -1,0 +1,22 @@
+{
+  "name": "etruscos_touch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build": "esbuild main.js style.css --bundle --external:*ttf --minify --outdir=build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Visivalab/etruscos_touch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Visivalab/etruscos_touch/issues"
+  },
+  "homepage": "https://github.com/Visivalab/etruscos_touch#readme",
+  "dependencies": {
+    "esbuild": "^0.14.27"
+  }
+}
