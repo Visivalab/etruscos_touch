@@ -1,13 +1,7 @@
-import './pages/page-divinity.js'
+import './pages/page-categories.js'
 import './pages/page-home.js'
 
-import './components/full-video.js'
-import './components/divinity-portrait.js'
-import './components/divinity-header.js'
+import './components/main-category.js'
+import './components/sub-category.js'
 import './components/screen-saver.js'
-
-
-/** Desactiva el click derecho
- * Previene que los usuarios puedan hacer cosas chungas pulsando la pantalla
- */
-//document.addEventListener('contextmenu', event => event.preventDefault())
+import './components/final-element.js'

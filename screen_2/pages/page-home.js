@@ -13,10 +13,9 @@ template.innerHTML = `
 
     img{
       position: absolute;
-      left: 110px;
-      top: 234px;
-      opacity: 0.7;
-      transform: scaleX(-1);
+      left: 140px;
+      top: 60px;
+      opacity: 0.9;
     }
     h1{
       background: url('./assets/icons/arrow.svg') no-repeat center right;
@@ -51,11 +50,11 @@ template.innerHTML = `
 
 </style>
 <div>
-    <img src="./assets/images/home.jpg" width="800px" />
+    <img src="./assets/images/home.png" width="800px" />
     <div>
-      <h1 data-lang="fr">Le Panthéon Étrusque</h1>
-      <h1 data-lang="en">The Etruscan Pantheon</h1>
-      <h1 data-lang="es">El Panteón Etrusco</h1>
+      <h1 data-lang="fr">Tales from the urns</h1>
+      <h1 data-lang="en">Tales from the urns</h1>
+      <h1 data-lang="es">Tales from the urns</h1>
     </div>
 </div>
 `;
@@ -90,7 +89,7 @@ export class pageHome extends HTMLElement {
         
 
         // Cargamos la siguiente
-        let inner = document.createElement('page-divinity')
+        let inner = document.createElement('page-categories')
         document.querySelector('body').appendChild(inner)   
         
     })
