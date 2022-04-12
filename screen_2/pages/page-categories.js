@@ -36,11 +36,12 @@ template.innerHTML = `
       top: 100px;
       left: 150px;
       width: 40%;
-      transition: 1s;
+      transition: 1500ms;
     }
     .subcategory__info.hide{
       opacity: 0;
     }
+
     .subcategory__info__title{
       font-family: 'Cinzel';
       font-style: normal;
@@ -48,6 +49,8 @@ template.innerHTML = `
       font-size: 64px;
       line-height: 64px;
       color: white;
+
+      transition: 1000ms;
     }
     .subcategory__info__text{
       font-family: 'SourceSansPro';
@@ -63,6 +66,8 @@ template.innerHTML = `
       background: var(--primary-color-transp);
       box-sizing: border-box;
       margin-top: 30px;
+
+      transition: 1000ms;
     }
     .backHome{
       position: absolute;
@@ -90,7 +95,7 @@ template.innerHTML = `
     .maincategories, .subcategories{
       transition: 1s;
       display: flex;
-      top: 50%;
+      top: 46%;
       left: 50%;
       position: absolute;
       transform: translate(-50%, -50%);
@@ -197,17 +202,19 @@ export class pageCategories extends HTMLElement {
     this.showCategoryInfo()
     let timeout = 0
     for(let subcategory of subcategoriesToShow){
-      timeout += 100
+      
       let subcategory_el = document.createElement('sub-category')
       subcategory_el.setAttribute(subcategory, '')
       subcategory_el.setAttribute('id', subcategory)
       subcategory_el.setAttribute('timeout', timeout)
+      
       subcategory_el.addEventListener('click', () => {
         this.removeAllSubcategories()
         this.removeAllFinalElements()
         this.showFinalElement(subcategory)
       })
       this.shadowRoot.querySelector('.subcategories').appendChild(subcategory_el)
+      timeout += 100
     }
   }
 
@@ -228,22 +235,31 @@ export class pageCategories extends HTMLElement {
 
     let subcategory_title = document.createElement('h1')
     subcategory_title.className = 'subcategory__info__title'
-    subcategory_title.textContent = db[this.category].name
+    //subcategory_title.style.opacity = 0
+    //subcategory_title.style.transition = '1000ms'
+    //subcategory_title.style.transform = 'translateX(20px)'
+    subcategory_title.textContent = db[this.category].name[config.lang]
     
     let subcategory_text = document.createElement('p')
     subcategory_text.className = 'subcategory__info__text'
+    //subcategory_text.style.opacity = 0
+    //subcategory_text.style.transition = '1000ms'
+    //subcategory_text.style.transform = 'translateX(40px)'
     subcategory_text.innerHTML =  db[this.category].description[config.lang]
 
-    setTimeout( () => {
-      let subcategory_info = this.shadowRoot.querySelector('.subcategory__info')
+    let subcategory_info = this.shadowRoot.querySelector('.subcategory__info')
+    
+    subcategory_info.appendChild(subcategory_title)
+    subcategory_info.appendChild(subcategory_text)
+    
+    /*setTimeout( () => {
+      subcategory_title.style.opacity = 1
+      subcategory_text.style.opacity = 1
+      subcategory_title.style.transform = 'translateX(0)'
+      subcategory_text.style.transform = 'translateX(0)'
+    },500)*/
       
-      subcategory_info.appendChild(subcategory_title)
-      subcategory_info.appendChild(subcategory_text)
-      
-      subcategory_info.classList.remove('hide')
-      
-    }, 400)
-
+    subcategory_info.classList.remove('hide')
   }
 
   removeAllFinalElements(){

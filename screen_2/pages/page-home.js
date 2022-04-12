@@ -13,9 +13,10 @@ template.innerHTML = `
 
     img{
       position: absolute;
-      left: 140px;
-      top: 60px;
+      left: 146px;
+      top: 48%;
       opacity: 0.9;
+      transform: translateY(-50%);
     }
     h1{
       background: url('./assets/icons/arrow.svg') no-repeat center right;
@@ -50,11 +51,11 @@ template.innerHTML = `
 
 </style>
 <div>
-    <img src="./assets/images/home.png" width="800px" />
+    <img src="./assets/images/home.png" width="600px" />
     <div>
-      <h1 data-lang="fr">Tales from the urns</h1>
+      <h1 data-lang="fr">Lés récits racontés par les urnes</h1>
       <h1 data-lang="en">Tales from the urns</h1>
-      <h1 data-lang="es">Tales from the urns</h1>
+      <h1 data-lang="es">Historias de las urnas</h1>
     </div>
 </div>
 `;

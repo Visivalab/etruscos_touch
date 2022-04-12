@@ -14,7 +14,20 @@ template.innerHTML = `
         margin: auto;
         position: relative;
         height: 80%;
+        transition: 1s;
+        opacity: 1;
     }
+    .finalElement.hide{
+        opacity: 0;
+    }
+    .finalElement.hide img{
+        left: 35%;
+    }
+    .finalElement.hide .texts{
+        left: 55%;
+    }
+
+
     img{
         top: 50%;
         position: absolute;
@@ -24,7 +37,7 @@ template.innerHTML = `
         max-height: 700px;
         max-width: 700px;
         width: auto;
-        transition: 1000ms;
+        transition: 1000ms ease-out;
     }
     img.highlight.hide{
         opacity: 0;
@@ -35,7 +48,9 @@ template.innerHTML = `
         top: 50%;
         width: 45%;
         transform: translateY(-50%);
+        transition: 1000ms ease-out;
     }
+    
     .name{
         font-family: 'Cinzel';
         font-style: normal;
@@ -62,8 +77,8 @@ template.innerHTML = `
     }
 </style>
 
-<div class="finalElement">
-    <img src="" />
+<div class="finalElement hide">
+    <img class="baseImage" src="" />
     <img class="highlight" src="" />
     <div class="texts">
         <h1 class="name">Title</h1>
@@ -83,19 +98,23 @@ export class finalElement extends HTMLElement {
   }
    
   connectedCallback() {
-    this.name = this.shadowRoot.querySelector('h1')
-    this.image = this.shadowRoot.querySelector('img')
+    this.name = this.shadowRoot.querySelector('.name')
+    this.image = this.shadowRoot.querySelector('.baseImage')
     this.description = this.shadowRoot.querySelector('.detailsBox')
     
     this.image.setAttribute('src', db[this.getAttribute('id')].img)
-    this.name.innerHTML = db[this.getAttribute('id')].name
+    this.name.innerHTML = db[this.getAttribute('id')].name[config.lang]
     this.description.innerHTML = db[this.getAttribute('id')].description[config.lang]
 
-    setTimeout( () => this.showNextHighlight(1), 2000)
-    for(let i=2; i<=db[this.getAttribute('id')].highlights+1; i++){
-        setTimeout( () => {
-            i === db[this.getAttribute('id')].highlights+1 ? this.backToInitialImage() : this.showNextHighlight(i)
-        }, i * config.timings.highlightDuration)
+    setTimeout(() => this.shadowRoot.querySelector('.finalElement').classList.remove('hide'), 50)
+
+    if(db[this.getAttribute('id')].highlights > 0){
+        setTimeout( () => this.showNextHighlight(1), 2000)
+        for(let i=2; i<=db[this.getAttribute('id')].highlights+1; i++){
+            setTimeout( () => {
+                i === db[this.getAttribute('id')].highlights+1 ? this.backToInitialImage() : this.showNextHighlight(i)
+            }, i * config.timings.highlightDuration)
+        }
     }
   }
 

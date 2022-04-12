@@ -1,3 +1,4 @@
+import {config} from '../config.js';
 import {db} from '../db.js'
 
 const template = document.createElement('template');
@@ -48,17 +49,16 @@ export class subCategory extends HTMLElement {
    
   connectedCallback() {
     this.id = this.getAttribute('id')
+    
     setTimeout( () => {
-      setTimeout( () => {
-        this.style.opacity = 1
-        this.style.transform = 'translate(0)'
-        this.shadowRoot.querySelector('p').style.transform = 'translateY(-15px)'
-      }, this.getAttribute('timeout'))
-    },200)
+      this.style.opacity = 1
+      this.style.transform = 'translate(0)'
+      this.shadowRoot.querySelector('p').style.transform = 'translateY(-15px)'
+    }, this.getAttribute('timeout'))
 
     let nameSpace = this.shadowRoot.querySelector('p')
     let imageSpace = this.shadowRoot.querySelector('img')
-    nameSpace.textContent = db[this.id].name
+    nameSpace.textContent = db[this.id].name[config.lang]
     imageSpace.setAttribute('src', db[this.id].portrait_img)
   }
 

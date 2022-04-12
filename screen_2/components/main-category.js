@@ -1,3 +1,4 @@
+import {config} from '../config.js';
 import {db} from '../db.js'
 
 const template = document.createElement('template');
@@ -80,7 +81,7 @@ export class mainCategory extends HTMLElement {
   connectedCallback() {
     let nameSpace = this.shadowRoot.querySelector('p')
     let imageSpace = this.shadowRoot.querySelector('img')
-    nameSpace.textContent = db[this.id].name
+    nameSpace.textContent = db[this.id].name[config.lang]
     imageSpace.setAttribute('src', db[this.id].portrait_img)
   }
 
