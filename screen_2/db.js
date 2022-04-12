@@ -72,7 +72,8 @@ export const db = {
             "fr": "<p>The protagonists are a husband and wife on a cart pulled by a young servant, a typical motif specific to urn representations in the Volterra area. The participants include a man and a child, another male figure wearing a mantle and a man on horseback who is going toward the couple before they undertake their journey.</p>",
             "en": "<p>The protagonists are a husband and wife on a cart pulled by a young servant, a typical motif specific to urn representations in the Volterra area. The participants include a man and a child, another male figure wearing a mantle and a man on horseback who is going toward the couple before they undertake their journey.</p>",
             "es": "<p>The protagonists are a husband and wife on a cart pulled by a young servant, a typical motif specific to urn representations in the Volterra area. The participants include a man and a child, another male figure wearing a mantle and a man on horseback who is going toward the couple before they undertake their journey.</p>"
-        }
+        },
+        "highlights": 3
     },
     "gate_to_afterlife": {
         "name": "Casket of a cinerary urn with a demon, dolphins and the gate to the Afterlife",

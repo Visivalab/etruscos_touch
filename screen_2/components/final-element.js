@@ -24,6 +24,10 @@ template.innerHTML = `
         max-height: 700px;
         max-width: 700px;
         width: auto;
+        transition: 1000ms;
+    }
+    img.highlight.hide{
+        opacity: 0;
     }
     .texts{
         position: absolute;
@@ -50,8 +54,8 @@ template.innerHTML = `
         font-family: 'SourceSansPro';
         font-style: normal;
         font-weight: 400;
-        font-size: 20px;
-        line-height: 28px;
+        font-size: 24px;
+        line-height: 32px;
         margin: 20px 0;
         z-index: 1;
         color: white;
@@ -60,6 +64,7 @@ template.innerHTML = `
 
 <div class="finalElement">
     <img src="" />
+    <img class="highlight" src="" />
     <div class="texts">
         <h1 class="name">Title</h1>
         <div class="detailsBox">
@@ -85,6 +90,27 @@ export class finalElement extends HTMLElement {
     this.image.setAttribute('src', db[this.getAttribute('id')].img)
     this.name.innerHTML = db[this.getAttribute('id')].name
     this.description.innerHTML = db[this.getAttribute('id')].description[config.lang]
+
+    setTimeout( () => this.showNextHighlight(1), 2000)
+    for(let i=2; i<=db[this.getAttribute('id')].highlights+1; i++){
+        setTimeout( () => {
+            i === db[this.getAttribute('id')].highlights+1 ? this.backToInitialImage() : this.showNextHighlight(i)
+        }, i * config.timings.highlightDuration)
+    }
+  }
+
+  showNextHighlight(index){
+      let hightlight = this.shadowRoot.querySelector('.highlight')
+      let nextHighlight = db[this.getAttribute('id')].img.slice(0,-4)
+      hightlight.classList.add('hide')
+      setTimeout( () => {
+        hightlight.setAttribute('src', nextHighlight+'-'+index+'.png')
+        hightlight.classList.remove('hide')
+      },1000)
+  }
+  backToInitialImage(){
+    let hightlight = this.shadowRoot.querySelector('.highlight')
+    hightlight.classList.add('hide')
   }
 
 }
