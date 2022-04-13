@@ -16,9 +16,14 @@ template.innerHTML = `
       width: 360px;
     }
     :host([bigImg]) p{
-      font-size: 24px;
-      line-height: 32px;
+      font-size: 35px;
+      line-height: 35px;
       margin-top: -15px;
+    }
+
+    .divinity__portrait:hover span{
+      transform: scale(1.1);
+      opacity: 0.3;
     }
 
     /* Dejar marcado el seleccionado para saber donde estás */

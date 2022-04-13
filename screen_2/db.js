@@ -5,26 +5,17 @@ export const db = {
         "es": "",
     },
     "layout": {
-        "greek": {
-            "fr": "Grec",
-            "en": "Greek",
-            "es": "Griego"
-        },
-        "roman": {
-            "fr": "Romain",
-            "en": "Roman",
-            "es": "Romano"
-        },
-        "etrusque": {
-            "fr": "Étrusque",
-            "en": "Etruscan",
-            "es": "Etrusco"
-        },
         "home": {
             "fr": "Home",
             "en": "Home",
             "es": "Inicio"
+        },
+        "back": {
+            "fr": "Arrière",
+            "en": "Back",
+            "es": "Atrás"    
         }
+
     },
 
     // Main categories

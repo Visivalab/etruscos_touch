@@ -35,7 +35,7 @@ template.innerHTML = `
       position: absolute;
       top: 100px;
       left: 150px;
-      width: 40%;
+      width: 50%;
       transition: 1500ms;
     }
     .subcategory__info.hide{
@@ -46,9 +46,10 @@ template.innerHTML = `
       font-family: 'Cinzel';
       font-style: normal;
       font-weight: 400;
-      font-size: 64px;
-      line-height: 64px;
+      font-size: 130px;
+      line-height: 130px;
       color: white;
+      margin: 0;
 
       transition: 1000ms;
     }
@@ -60,27 +61,26 @@ template.innerHTML = `
       line-height: 32px;
       margin: 20px 0;
       z-index: 1;
+      width: 80%;
       color: white;
-
-      padding: 40px 55px;
-      background: var(--primary-color-transp);
-      box-sizing: border-box;
-      margin-top: 30px;
 
       transition: 1000ms;
     }
-    .backHome{
+    .backHome, .back{
       position: absolute;
-      left: 1747px;
+      right: 50px;
       top: 434px;
       display: flex;
       align-items: center;
       transition: 1s;
     }
-    .backHome.hide{
+    .back{
+      top: 484px;
+    }
+    :is(.backHome, .back).hide{
       opacity: 0;
     }
-    .backHome p{
+    :is(.backHome, .back) p{
       font-family: 'Source Sans Pro';
       font-style: normal;
       font-weight: 400;
@@ -89,7 +89,7 @@ template.innerHTML = `
       text-align: right;
       color: var(--primary-color);
     }
-    .backHome img{
+    :is(.backHome, .back) img{
       margin-left: 15px;
     }
     .maincategories, .subcategories{
@@ -108,7 +108,7 @@ template.innerHTML = `
       flex-direction: column;
       top: 40%;
       gap: 10px;
-      width: 600px;
+      width: 540px;
       left: unset;
       right: 0;
     }
@@ -135,6 +135,10 @@ template.innerHTML = `
       <p translate="home">Home</p>
       <img src="./assets/icons/home.svg" width="33px" />
     </div>
+    <div class="back hide">
+      <p translate="back">Back</p>
+      <img src="./assets/icons/home.svg" width="33px" />
+    </div>
     <div>
       <div class="subcategory__info hide"></div>
       <div class="maincategories">
@@ -154,8 +158,13 @@ export class pageCategories extends HTMLElement {
     this.attachShadow({ mode:'open' })
     this.shadowRoot.appendChild(template.content.cloneNode(true))
 
+    // Para controlar en qué punto de la navegación estamos (categories, category, element)
+    this.navigation = ['categories','category','element']
+    this.currentNav = this.navigation[0]
+
     this.intro = null
     this.backHome = null
+    this.back = null
     this.mainCategories = null
 
     this.category = null
@@ -168,6 +177,7 @@ export class pageCategories extends HTMLElement {
 
     this.intro = this.shadowRoot.querySelector('.intro')
     this.backHome = this.shadowRoot.querySelector('.backHome')
+    this.back = this.shadowRoot.querySelector('.back')
     this.mainCategories = this.shadowRoot.querySelectorAll('main-category')
     
     this.categoryTitle = this.shadowRoot.querySelectorAll('.subcategory__info__title')
@@ -178,6 +188,7 @@ export class pageCategories extends HTMLElement {
     
     /* Home button events */
     this.prepareHomeButton()
+    this.prepareBackButton()
 
     /* Main categories functionalities */
     for(let mainCategory of this.mainCategories) mainCategory.addEventListener('click', ev => {
@@ -189,6 +200,8 @@ export class pageCategories extends HTMLElement {
       this.removeAllSubcategories()
       this.removeAllFinalElements()
       this.loadSubCategories()
+
+      this.currentNav = this.navigation[1]
     })
 
   }
@@ -212,17 +225,26 @@ export class pageCategories extends HTMLElement {
         this.removeAllSubcategories()
         this.removeAllFinalElements()
         this.showFinalElement(subcategory)
+        this.currentNav = this.navigation[2]
       })
       this.shadowRoot.querySelector('.subcategories').appendChild(subcategory_el)
       timeout += 100
     }
   }
 
-  relayoutMainCategories(){
-    // Pone las maincategories en fila abajo
-    this.shadowRoot.querySelector('.maincategories').classList.add('bottom')
-    for(let mainCategory of this.mainCategories){
-      mainCategory.removeAttribute('bigImg', '')
+  relayoutMainCategories(back=false){
+    if(back){
+      // Pone las maincategories arriba
+      this.shadowRoot.querySelector('.maincategories').classList.remove('bottom')
+      for(let mainCategory of this.mainCategories){
+        mainCategory.setAttribute('bigImg', '')
+      }  
+    }else{
+      // Pone las maincategories abajo
+      this.shadowRoot.querySelector('.maincategories').classList.add('bottom')
+      for(let mainCategory of this.mainCategories){
+        mainCategory.removeAttribute('bigImg', '')
+      }
     }
   }
 
@@ -235,29 +257,16 @@ export class pageCategories extends HTMLElement {
 
     let subcategory_title = document.createElement('h1')
     subcategory_title.className = 'subcategory__info__title'
-    //subcategory_title.style.opacity = 0
-    //subcategory_title.style.transition = '1000ms'
-    //subcategory_title.style.transform = 'translateX(20px)'
     subcategory_title.textContent = db[this.category].name[config.lang]
     
     let subcategory_text = document.createElement('p')
     subcategory_text.className = 'subcategory__info__text'
-    //subcategory_text.style.opacity = 0
-    //subcategory_text.style.transition = '1000ms'
-    //subcategory_text.style.transform = 'translateX(40px)'
     subcategory_text.innerHTML =  db[this.category].description[config.lang]
 
     let subcategory_info = this.shadowRoot.querySelector('.subcategory__info')
     
     subcategory_info.appendChild(subcategory_title)
     subcategory_info.appendChild(subcategory_text)
-    
-    /*setTimeout( () => {
-      subcategory_title.style.opacity = 1
-      subcategory_text.style.opacity = 1
-      subcategory_title.style.transform = 'translateX(0)'
-      subcategory_text.style.transform = 'translateX(0)'
-    },500)*/
       
     subcategory_info.classList.remove('hide')
   }
@@ -288,6 +297,7 @@ export class pageCategories extends HTMLElement {
     this.intro.textContent = db['intro'][config.lang]
     this.intro.classList.remove('hide')
     this.backHome.classList.remove('hide')
+    this.back.classList.remove('hide')
     /* Los portraits aparecen cascada de opacidad */
     setTimeout(() => {
       for(let i=0; i<this.mainCategories.length; i++){
@@ -296,15 +306,39 @@ export class pageCategories extends HTMLElement {
     },500)
   }
   
+  prepareBackButton(){
+    this.back.addEventListener('click', () => {
+      switch (this.currentNav) {
+        case 'categories':
+          this.goHome()
+        break;
+        case 'category':
+          this.removeAllSubcategories()
+          this.relayoutMainCategories(true)
+          this.currentNav = this.navigation[0]
+        break;
+        case 'element':
+          this.removeAllFinalElements()
+          this.loadSubCategories()
+          this.currentNav = this.navigation[1]
+        break;
+      }
+    })
+  }
+
   prepareHomeButton(){
     this.backHome.addEventListener('click', () => {
-      // Eliminamos la pagina actual (con fade)
-      this.style.opacity = 0
-      setTimeout( () => this.remove(), 1000)
-      // Cargamos la home (que ya tiene fade incorporado)
-      let inner = document.createElement('page-home')
-      document.querySelector('body').appendChild(inner)
+      this.goHome()
     })
+  }
+
+  goHome(){
+    // Eliminamos la pagina actual (con fade)
+    this.style.opacity = 0
+    setTimeout( () => this.remove(), 1000)
+    // Cargamos la home (que ya tiene fade incorporado)
+    let inner = document.createElement('page-home')
+    document.querySelector('body').appendChild(inner)
   }
 
   showFinalElement(subcategory){

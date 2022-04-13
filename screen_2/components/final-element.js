@@ -45,9 +45,7 @@ template.innerHTML = `
     .texts{
         position: absolute;
         left: 50%;
-        top: 50%;
         width: 45%;
-        transform: translateY(-50%);
         transition: 1000ms ease-out;
     }
     
@@ -55,15 +53,16 @@ template.innerHTML = `
         font-family: 'Cinzel';
         font-style: normal;
         font-weight: 400;
+        height: 300px;
         font-size: 50px;
         line-height: 50px;
         color: white;
+        display: flex;
+        align-items: end;
     }
     .detailsBox{
-        padding: 40px 55px;
-        background: var(--primary-color-transp);
-        box-sizing: border-box;
-        margin-top: 30px;
+        position: absolute;
+        top: 300px;
     }
     .detailsBox p{
         font-family: 'SourceSansPro';
