@@ -29,29 +29,27 @@ template.innerHTML = `
         position: absolute;
         left: 50%;
         width: 45%;
+        top: 50%;
         transition: 1000ms ease-out;
+        transform: translateY(-50%);
     }
     
     .name{
         font-family: 'Cinzel';
         font-style: normal;
         font-weight: 400;
-        height: 300px;
         font-size: 50px;
         line-height: 50px;
         color: white;
-        display: flex;
-        align-items: end;
     }
     .detailsBox{
-        position: absolute;
-        top: 300px;
+        width: 630px;
     }
     .detailsBox p{
         font-family: 'SourceSansPro';
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
+        font-size: 22px;
         line-height: 32px;
         margin: 20px 0;
         z-index: 1;
@@ -69,6 +67,12 @@ template.innerHTML = `
         height: 700px;
         left: 25%;
         top: 50%;
+    }
+    .base_image.opaco{
+        filter: brightness(0.6);
+    }
+    .base_image{
+        filter: brightness(1);
     }
     .zoomed_container{
         opacity: 0;
@@ -148,12 +152,14 @@ export class finalElement extends HTMLElement {
 
     moveLens(lens_iteration, zoom_details){
         this.zoom.style.opacity = 1
+        this.image.classList.add('opaco')
         setTimeout( () => {
-            /* Esconde la lupa cuando ya no hay mas posiciones 
+            // Esconde la lupa cuando ya no hay mas posiciones 
             if(!zoom_details[lens_iteration]){
                 this.zoom.style.opacity = 0
+                this.image.classList.remove('opaco')
                 return
-            }*/
+            }
             
             this.zoom.style.transform = `translate(${zoom_details[lens_iteration].box_position[0]}px, ${zoom_details[lens_iteration].box_position[1]}px) scale(1.2)`
             this.zoom.style.setProperty('--clip-position', `${zoom_details[lens_iteration].lens_position[0]}px ${zoom_details[lens_iteration].lens_position[1]}px`)

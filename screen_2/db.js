@@ -21,9 +21,9 @@ export const db = {
     // Main categories
     "journey_of_deceased": {
         "name": {
-            "fr": "Le voyage du défunt",
-            "en": "The journey of the deceased",
-            "es": "Viaje del difunto",
+            "fr": "<p>Le voyage<br>du défunt</p>",
+            "en": "<p>The journey<br>of the deceased</p>",
+            "es": "<p>Viaje<br>del difunto</p>",
         },
         "img": "./assets/images/journey_of_deceased.png",
         "portrait_img": "./assets/images/journey_of_deceased-portrait.png",
@@ -36,9 +36,9 @@ export const db = {
     },
     "mythologies": {
         "name": {
-            "fr": "Mythologies",
-            "en": "Mythologies",
-            "es": "Mitologías",
+            "fr": "<p>Mythologies</p>",
+            "en": "<p>Mythologies</p>",
+            "es": "<p>Mitologías</p>",
         },
         "img": "./assets/images/mythologies.png",
         "portrait_img": "./assets/images/mythologies-portrait.png",
@@ -51,9 +51,9 @@ export const db = {
     },
     "infernal_deities": {
         "name": {
-            "fr": "Divinités infernales",
-            "en": "Infernal deities",
-            "es": "Deidades infernales",
+            "fr": "<p>Divinités<br>infernales</p>",
+            "en": "<p>Infernal<br>deities</p>",
+            "es": "<p>Deidades<br>infernales</p>",
         },
         "img": "./assets/images/infernal_deities.png",
         "portrait_img": "./assets/images/infernal_deities-portrait.png",
@@ -69,9 +69,9 @@ export const db = {
     // -- journey_of_deceased
     "couple_on_cart": {
         "name": {
-            "fr": "Urne cinéraire représentant le voyage d’un couple d’époux sur un char",
-            "en": "Cinerary urn with a journey of a married couple on a cart",
-            "es": "Urna cineraria con viaje de una pareja de esposos en un carro",
+            "fr": "<p>Urne cinéraire représentant le voyage d’un couple d’époux sur un char</p>",
+            "en": "<p>Cinerary urn with a journey of a married couple on a cart</p>",
+            "es": "<p>Urna cineraria con viaje de una pareja de esposos en un carro</p>",
         },
         "img": "./assets/images/couple_on_cart.png",
         "portrait_img": "./assets/images/couple_on_cart-portrait.png",
@@ -97,14 +97,14 @@ export const db = {
     },
     "gate_to_afterlife": {
         "name": {
-            "fr": "Caisse d’urne cinéraire avec démon, dauphins et porte de l’Au-delà",
-            "en": "Casket of a cinerary urn with a demon, dolphins and the gate to the Afterlife",
-            "es": "Caja de urna cenicienta con demonio, delfines y puerta al Más Allá",
+            "fr": "<p>Caisse d’urne cinéraire avec démon, dauphins et porte de l’Au-delà</p>",
+            "en": "<p>Casket of a cinerary urn with a demon, dolphins and the gate to the Afterlife</p>",
+            "es": "<p>Caja de urna cenicienta con demonio, delfines y puerta al Más Allá</p>",
         },
         "img": "./assets/images/gate_to_afterlife.png",
         "portrait_img": "./assets/images/gate_to_afterlife-portrait.png",
         "description": {
-            "fr": "<p>L’urne cinéraire présente une caisse décorée au centre d’un démon féminin qui tient dans ses mains les rênes de quatre chevaux piaffants ; ceux-ci émergent des vagues de la mer où nagent deux dauphins.</p><p>Sur les côtés de la caisse, on voit la représentation de la porte fermée des enfers. Le thème de la porte pour l’Au-delà correspond à la frontière sans retour entre le monde des vivants et celui des morts.</p><p>En effet, une fois que le défunt franchit la porte des enfers, il doit affronter un voyage dangereux peuplé de démons et de monstres, mais aussi de figures positives, comme les dauphins dans ce cas, qui aident son âme dans ce parcours difficile.</p>",
+            "fr": "<p>L’urne cinéraire présente une caisse décorée au centre d’un démon féminin qui tient dans ses mains les rênes de quatre chevaux piaffants; ceux-ci émergent des vagues de la mer où nagent deux dauphins.</p><p>Sur les côtés de la caisse, on voit la représentation de la porte fermée des enfers. Le thème de la porte pour l’Au-delà correspond à la frontière sans retour entre le monde des vivants et celui des morts.</p><p>En effet, une fois que le défunt franchit la porte des enfers, il doit affronter un voyage dangereux peuplé de démons et de monstres, mais aussi de figures positives, comme les dauphins dans ce cas, qui aident son âme dans ce parcours difficile.</p>",
             "en": "<p>The casket of this cinerary urn has a central decoration with a female demon holding the reins of four horses, which are chomping at the bit. The horses emerge from the waves of the sea, in which two dolphins are swimming.</p><p>The sides of the casket, meanwhile, depict the closed gate of the underworld. The motif of the gate to the Afterlife represents the point of no return between the worlds of the living and the dead.</p><p>Once the deceased passed through the gate of the underworld, he or she indeed faced a dangerous journey through a land inhabited by demons and monsters, but also by benign figures who helped the soul on its difficult passage, such as dolphins in this case.</p>",
             "es": "<p>La urna cineraria tiene una caja decorada en el centro con un demonio femenino que sostiene las riendas de cuatro caballos al galope. Estos salen de las olas del mar donde nadan dos delfines.</p><p>En los laterales de la caja, se puede observar la representación de la puerta cerrada del inframundo. El tema de la puerta del Más Allá corresponde a la frontera sin retorno entre el mundo de los vivos y el de los muertos.</p><p>Tras atravesar la puerta del inframundo, al difunto le esperaba un peligroso viaje poblado de demonios y monstruos, pero también de figuras positivas que debían ayudar al alma en el difícil camino, como los delfines en este caso.</p>"
         },
@@ -121,14 +121,14 @@ export const db = {
     },
     "triumphal_procession": {
         "name": {
-            "fr": "Caisse d’urne cinéraire représentant une procession triomphale",
-            "en": "Casket of a funerary urn with a triumphal procession",
-            "es": "Caja de urna cineraria con procesión triunfal",
+            "fr": "<p>Caisse d’urne cinéraire représentant une procession triomphale</p>",
+            "en": "<p>Casket of a funerary urn with a triumphal procession</p>",
+            "es": "<p>Caja de urna cineraria con procesión triunfal</p>",
         },
         "img": "./assets/images/triumphal_procession.png",
         "portrait_img": "./assets/images/triumphal_procession-portrait.png",
         "description": {
-            "fr": "<p>Dans cette urne, la scène de l'ultime voyage revêt une double signification. Nous nous trouvons devant la représentation d’un triomphe : la procession typique du monde étrusque et romain avec laquelle les magistrats et les généraux célébraient les grandes victoires. En effet, le protagoniste est un magistrat qui part sur un quadrige. Le cortège qui l’entoure est composé d’un groupe de musiciens, un joueur de cithare et un joueur de cor, et de licteurs, que l’on reconnaît par les « faisceaux » qu’ils portent sur l’épaule. La figure qui se trouve près du défunt est Vanth, la déesse qui a pour mission d’accompagner les âmes dans l'Au-delà. Elle a les ailes déployées et porte un flambeau.</p>",
+            "fr": "<p>Dans cette urne, la scène de l'ultime voyage revêt une double signification. Nous nous trouvons devant la représentation d’un triomphe: la procession typique du monde étrusque et romain avec laquelle les magistrats et les généraux célébraient les grandes victoires. En effet, le protagoniste est un magistrat qui part sur un quadrige. Le cortège qui l’entoure est composé d’un groupe de musiciens, un joueur de cithare et un joueur de cor, et de licteurs, que l’on reconnaît par les « faisceaux » qu’ils portent sur l’épaule. La figure qui se trouve près du défunt est Vanth, la déesse qui a pour mission d’accompagner les âmes dans l'Au-delà. Elle a les ailes déployées et porte un flambeau.</p>",
             "en": "<p>The scene of the final journey on this urn takes on a double meaning. We see here the representation of a triumph, the typical procession of the Etruscan and Roman worlds in which magistrates and generals celebrated great victories. The protagonist here is indeed a magistrate taking his leave on a quadriga. The procession surrounding him is made up of a group of musicians – one playing a cithara, the other a horn – and of lictors, recognisable by the fasces they carry on their shoulders. The figure next to the deceased with spread wings and a torch in her hand is Vanth, the deity whose task is to accompany souls into the Afterlife.</p>",
             "es": "<p>En esta urna, la escena del último viaje adquiere un doble significado. Se trata de una representación de un triunfo: la típica procesión etrusca y romana en la que magistrados y generales celebraban grandes victorias. El protagonista es, de hecho, un magistrado que parte en una cuadriga. La procesión que lo rodea está formada por un grupo de músicos, uno de ellos toca la cítara y el otro la trompa, y por lictores, reconocibles por los 'haces' que llevan al hombro. La figura junto al difunto con las alas extendidas y una antorcha en la mano es Vanth: la deidad encargada de acompañar a las almas al Más Allá.</p>"
         },
@@ -151,9 +151,9 @@ export const db = {
     // -- mythologies
     "rape_of_persephone": {
         "name": {
-            "fr": "Urne cinéraire représentant l’enlèvement de Perséphone",
-            "en": "Cinerary urn with the Rape of Persephone",
-            "es": "Urna cineraria con el rapto de Perséfone",
+            "fr": "<p>Urne cinéraire représentant l’enlèvement de Perséphone</p>",
+            "en": "<p>Cinerary urn with the Rape of Persephone</p>",
+            "es": "<p>Urna cineraria con el rapto de Perséfone</p>",
         },
         "img": "./assets/images/rape_of_persephone.png",
         "portrait_img": "./assets/images/rape_of_persephone-portrait.png",
@@ -175,9 +175,9 @@ export const db = {
     },
     "odysseus_and_sirens": {
         "name": {
-            "fr": "Urne cinéraire représentant Ulysse et les Sirènes",
-            "en": "Cinerary urn with Odysseus and the Sirens",
-            "es": "Urna cineraria con Ulises y las Sirenas",
+            "fr": "<p>Urne cinéraire représentant Ulysse et les Sirènes</p>",
+            "en": "<p>Cinerary urn with Odysseus and the Sirens</p>",
+            "es": "<p>Urna cineraria con Ulises y las Sirenas</p>",
         },
         "img": "./assets/images/odysseus_and_sirens.png",
         "portrait_img": "./assets/images/odysseus_and_sirens-portrait.png",
@@ -199,9 +199,9 @@ export const db = {
     },
     "rape_of_helen": {
         "name": {
-            "fr": "Urne cinéraire représentant l’enlèvement d’Hélène",
-            "en": "Cinerary urn with the Rape of Helen",
-            "es": "Urna cineraria con el rapto de Helena",
+            "fr": "<p>Urne cinéraire représentant l’enlèvement d’Hélène</p>",
+            "en": "<p>Cinerary urn with the Rape of Helen</p>",
+            "es": "<p>Urna cineraria con el rapto de Helena</p>",
         },
         "img": "./assets/images/rape_of_helen.png",
         "portrait_img": "./assets/images/rape_of_helen-portrait.png",
@@ -225,9 +225,9 @@ export const db = {
     // -- infernal_deities
     "vanth_and_charun": {
         "name": {
-            "fr": "Urne cinéraire représentant Vanth et Charun qui accompagnent un défunt",
-            "en": "Cinerary urn with Vanth and Charun accompanying a deceased man",
-            "es": "Urna cineraria con Vanth y Charun acompañando a un difunto",
+            "fr": "<p>Urne cinéraire représentant Vanth et Charun qui accompagnent un défunt</p>",
+            "en": "<p>Cinerary urn with Vanth and Charun accompanying<br>a deceased man</p>",
+            "es": "<p>Urna cineraria con Vanth y Charun acompañando a un difunto</p>",
         },
         "img": "./assets/images/vanth_and_charun.png",
         "portrait_img": "./assets/images/vanth_and_charun-portrait.png",
@@ -253,9 +253,9 @@ export const db = {
     },
     "sea_monster": {
         "name": {
-            "fr": "Urne cinéraire représentant un monstre marin",
-            "en": "Cinerary urn with a sea monster",
-            "es": "Urna cineraria con monstruo marino",
+            "fr": "<p>Urne cinéraire représentant un monstre marin</p>",
+            "en": "<p>Cinerary urn with a sea monster</p>",
+            "es": "<p>Urna cineraria con monstruo marino</p>",
         },
         "img": "./assets/images/sea_monster.png",
         "portrait_img": "./assets/images/sea_monster-portrait.png",
@@ -281,9 +281,9 @@ export const db = {
     },
     "monster_out_of_well": {
         "name": {
-            "fr": "Caisse d’urne cinéraire : un Monstre qui sort du puits",
-            "en": "Casket of a cinerary urn: a monster coming out of a well",
-            "es": "Caja de urna cenicienta: Monstruo saliendo del pozo",
+            "fr": "<p>Caisse d’urne cinéraire: un Monstre qui sort du puits</p>",
+            "en": "<p>Casket of a cinerary urn: a monster coming out of a well</p>",
+            "es": "<p>Caja de urna cenicienta: Monstruo saliendo del pozo</p>",
         },
         "img": "./assets/images/monster_out_of_well.png",
         "portrait_img": "./assets/images/monster_out_of_well-portrait.png",

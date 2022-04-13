@@ -33,9 +33,10 @@ template.innerHTML = `
 
     .subcategory__info{
       position: absolute;
-      top: 100px;
+      top: 40%;
       left: 150px;
-      width: 50%;
+      width: 48%;
+      transform: translateY(-50%);
       transition: 1500ms;
     }
     .subcategory__info.hide{
@@ -46,12 +47,14 @@ template.innerHTML = `
       font-family: 'Cinzel';
       font-style: normal;
       font-weight: 400;
-      font-size: 130px;
-      line-height: 130px;
+      font-size: 112px;
+      line-height: 110px;
       color: white;
-      margin: 0;
-
       transition: 1000ms;
+      margin-left: -5px;
+    }
+    .subcategory__info__title p{
+      margin: 0;
     }
     .subcategory__info__text{
       font-family: 'SourceSansPro';
@@ -76,6 +79,10 @@ template.innerHTML = `
     }
     .back{
       top: 484px;
+    }
+    .back img{
+      transform: rotate(180deg);
+      margin-right: 7px;
     }
     :is(.backHome, .back).hide{
       opacity: 0;
@@ -102,15 +109,15 @@ template.innerHTML = `
       width: 1500px;
       justify-content: center;
       align-items: flex-start;
-      gap: 200px;
+      gap: 80px;
     }
     .subcategories{
       flex-direction: column;
       top: 40%;
-      gap: 10px;
+      gap: 0;
       width: 540px;
       left: unset;
-      right: 0;
+      right: 45px;
     }
 
     /* Una main category es seleccionada y se van todas pal fondo */
@@ -137,7 +144,7 @@ template.innerHTML = `
     </div>
     <div class="back hide">
       <p translate="back">Back</p>
-      <img src="./assets/icons/home.svg" width="33px" />
+      <img src="./assets/icons/arrow.svg" width="20px" />
     </div>
     <div>
       <div class="subcategory__info hide"></div>
@@ -255,11 +262,11 @@ export class pageCategories extends HTMLElement {
 
   showCategoryInfo(){
 
-    let subcategory_title = document.createElement('h1')
+    let subcategory_title = document.createElement('div')
     subcategory_title.className = 'subcategory__info__title'
-    subcategory_title.textContent = db[this.category].name[config.lang]
+    subcategory_title.innerHTML = db[this.category].name[config.lang]
     
-    let subcategory_text = document.createElement('p')
+    let subcategory_text = document.createElement('div')
     subcategory_text.className = 'subcategory__info__text'
     subcategory_text.innerHTML =  db[this.category].description[config.lang]
 
@@ -279,6 +286,7 @@ export class pageCategories extends HTMLElement {
 
   removeAllSubcategories(){
     // Esconde el texto de la subcategoria
+
     let subcategory_info = this.shadowRoot.querySelector('.subcategory__info')
     subcategory_info.classList.add('hide')
 

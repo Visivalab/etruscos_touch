@@ -15,6 +15,11 @@ template.innerHTML = `
       transition: 1s;
       width: 360px;
     }
+    :host([bigImg]) .divinity__portrait{
+      width: 350px;
+    }
+    
+
     :host([bigImg]) p{
       font-size: 35px;
       line-height: 35px;
@@ -37,7 +42,8 @@ template.innerHTML = `
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 200px;
+      width: 150px;
+      transition: 1s;
     }
     .divinity__portrait--selected{
       position: absolute;
@@ -58,18 +64,17 @@ template.innerHTML = `
       font-style: normal;
       font-weight: 400;
       font-size: 18px;
-      line-height: 22px;
+      line-height: 20px;
       text-align: center;
       color: white;
       transition: 1s;
-      margin-top: -5px;
     }
 </style>
 
 <div class="divinity__portrait">
     <span class="divinity__portrait--selected"></span>
     <img src="images/portrait.png" />
-    <p>Divinity</p>
+    <div class="name"></div>
 </div>
 `;
 
@@ -84,9 +89,9 @@ export class mainCategory extends HTMLElement {
   }
    
   connectedCallback() {
-    let nameSpace = this.shadowRoot.querySelector('p')
+    let nameSpace = this.shadowRoot.querySelector('.name')
     let imageSpace = this.shadowRoot.querySelector('img')
-    nameSpace.textContent = db[this.id].name[config.lang]
+    nameSpace.innerHTML = db[this.id].name[config.lang]
     imageSpace.setAttribute('src', db[this.id].portrait_img)
   }
 
