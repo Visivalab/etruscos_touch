@@ -20,28 +20,11 @@ template.innerHTML = `
     .finalElement.hide{
         opacity: 0;
     }
-    .finalElement.hide img{
-        left: 35%;
-    }
     .finalElement.hide .texts{
         left: 55%;
     }
 
 
-    img{
-        top: 50%;
-        position: absolute;
-        transform: translate(-50%,-50%);
-        left: 25%;
-        z-index: 1;
-        max-height: 700px;
-        max-width: 700px;
-        width: auto;
-        transition: 1000ms ease-out;
-    }
-    img.highlight.hide{
-        opacity: 0;
-    }
     .texts{
         position: absolute;
         left: 50%;
@@ -74,11 +57,46 @@ template.innerHTML = `
         z-index: 1;
         color: white;
     }
+
+    /* Images managment */
+    .zoomed_image{
+        position: absolute;
+        top: 120px;
+        left: 0px;
+    }
+    .base_image, .zoomed_container{
+        position: absolute;
+        height: 700px;
+        left: 25%;
+        top: 50%;
+    }
+    .zoomed_container{
+        opacity: 0;
+        --clip-position: 0 0;
+        --clip-speed: 2s;
+        clip-path: circle(80px at var(--clip-position));
+        background-color: var(--primary-color);
+        left: 50%;
+        transition: opacity 1s, clip-path var(--clip-speed), transform var(--clip-speed);
+    }
+    .zoomed_container img{
+        clip-path: circle(79px at var(--clip-position));
+        transition: clip-path var(--clip-speed);
+        height: 100%;
+    }
+
+
 </style>
 
 <div class="finalElement hide">
-    <img class="baseImage" src="" />
-    <img class="highlight" src="" />
+    
+    <div class="zoomed_image">
+        <img class="base_image" />
+        <div class="zoomed_container">
+            <img class="lens_image" />
+        </div>
+    </div>
+
     <div class="texts">
         <h1 class="name">Title</h1>
         <div class="detailsBox">
@@ -89,47 +107,60 @@ template.innerHTML = `
 `;
 
 export class finalElement extends HTMLElement {
-  
-  constructor() {
-    super()
-    this.attachShadow({ mode:'open' })
-    this.shadowRoot.appendChild(template.content.cloneNode(true))
-  }
-   
-  connectedCallback() {
-    this.name = this.shadowRoot.querySelector('.name')
-    this.image = this.shadowRoot.querySelector('.baseImage')
-    this.description = this.shadowRoot.querySelector('.detailsBox')
-    
-    this.image.setAttribute('src', db[this.getAttribute('id')].img)
-    this.name.innerHTML = db[this.getAttribute('id')].name[config.lang]
-    this.description.innerHTML = db[this.getAttribute('id')].description[config.lang]
 
-    setTimeout(() => this.shadowRoot.querySelector('.finalElement').classList.remove('hide'), 50)
-
-    if(db[this.getAttribute('id')].highlights > 0){
-        setTimeout( () => this.showNextHighlight(1), 2000)
-        for(let i=2; i<=db[this.getAttribute('id')].highlights+1; i++){
-            setTimeout( () => {
-                i === db[this.getAttribute('id')].highlights+1 ? this.backToInitialImage() : this.showNextHighlight(i)
-            }, i * config.timings.highlightDuration)
-        }
+    constructor() {
+        super()
+        this.attachShadow({ mode:'open' })
+        this.shadowRoot.appendChild(template.content.cloneNode(true))
     }
-  }
+   
+    connectedCallback() {
+        this.name = this.shadowRoot.querySelector('.name')
+        this.description = this.shadowRoot.querySelector('.detailsBox')
 
-  showNextHighlight(index){
-      let hightlight = this.shadowRoot.querySelector('.highlight')
-      let nextHighlight = db[this.getAttribute('id')].img.slice(0,-4)
-      hightlight.classList.add('hide')
-      setTimeout( () => {
-        hightlight.setAttribute('src', nextHighlight+'-'+index+'.png')
-        hightlight.classList.remove('hide')
-      },1000)
-  }
-  backToInitialImage(){
-    let hightlight = this.shadowRoot.querySelector('.highlight')
-    hightlight.classList.add('hide')
-  }
+        this.image = this.shadowRoot.querySelector('.base_image')
+        this.lensImage = this.shadowRoot.querySelector('.lens_image')
+        this.zoom = this.shadowRoot.querySelector('.zoomed_container')
+
+
+        this.image.setAttribute('src', db[this.getAttribute('id')].img)
+        this.lensImage.setAttribute('src', db[this.getAttribute('id')].img)
+
+        this.name.innerHTML = db[this.getAttribute('id')].name[config.lang]
+        this.description.innerHTML = db[this.getAttribute('id')].description[config.lang]
+
+        setTimeout(() => {
+            this.shadowRoot.querySelector('.finalElement').classList.remove('hide'),
+            this.init_lens()
+        }, 50)
+    }
+
+    // Gestiona el movimiento de la lupa
+    init_lens(){
+        const zoom_details = db[this.getAttribute('id')].zoom_details
+
+        this.zoom.style.transform = `translate(${zoom_details[0].box_position[0]}px, ${zoom_details[0].box_position[1]}px) scale(1.2)`
+        this.zoom.style.setProperty('--clip-position', `${zoom_details[0].lens_position[0]}px ${zoom_details[0].lens_position[1]}px`)
+        setTimeout( () => {
+            this.moveLens(1, zoom_details)
+        }, 3000)
+    }
+
+    moveLens(lens_iteration, zoom_details){
+        this.zoom.style.opacity = 1
+        setTimeout( () => {
+            /* Esconde la lupa cuando ya no hay mas posiciones 
+            if(!zoom_details[lens_iteration]){
+                this.zoom.style.opacity = 0
+                return
+            }*/
+            
+            this.zoom.style.transform = `translate(${zoom_details[lens_iteration].box_position[0]}px, ${zoom_details[lens_iteration].box_position[1]}px) scale(1.2)`
+            this.zoom.style.setProperty('--clip-position', `${zoom_details[lens_iteration].lens_position[0]}px ${zoom_details[lens_iteration].lens_position[1]}px`)
+            this.moveLens(lens_iteration+1, zoom_details)
+            
+        }, config.timings.lensPause)
+    }
 
 }
 
