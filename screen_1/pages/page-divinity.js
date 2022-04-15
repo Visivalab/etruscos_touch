@@ -58,23 +58,32 @@ template.innerHTML = `
       transition: 1s;
       position: absolute;
       transform: none;
+
+      
     }
     divinity-portrait.hide{
       opacity: 0;
       transform: translateY(10px)
     }
+    /* Fufluns */
     divinity-portrait:nth-child(1){ left: 475px; bottom: 420px; }
     divinity-portrait[inList]:nth-child(1){ left: 219px; bottom: 55px; }
+    /* Laran */
     divinity-portrait:nth-child(2){ left: 886.88px; bottom: 420px; }
     divinity-portrait[inList]:nth-child(2){ left: 453px; bottom: 55px; }
+    /* Menerva */
     divinity-portrait:nth-child(3){ left: 1286.68px; bottom: 420px; }
     divinity-portrait[inList]:nth-child(3){ left: 685px; bottom: 55px; }
+    /* Tinia */
     divinity-portrait:nth-child(4){ left: 268px; bottom: 137px; }
     divinity-portrait[inList]:nth-child(4){ left: 923px; bottom: 55px; }
+    /* Turan */
     divinity-portrait:nth-child(5){ left: 671.32px; bottom: 137px; }
     divinity-portrait[inList]:nth-child(5){ left: 1164px; bottom: 55px; }
+    /* Turms */
     divinity-portrait:nth-child(6){ left: 1087.63px; bottom: 137px; }
     divinity-portrait[inList]:nth-child(6){ left: 1402px; bottom: 55px; }
+    /* Uni */
     divinity-portrait:nth-child(7){ left: 1512.52px; bottom: 137px; }
     divinity-portrait[inList]:nth-child(7){ left: 1637px; bottom: 55px; }
 </style>
@@ -86,13 +95,13 @@ template.innerHTML = `
       <img src="./assets/icons/home.svg" width="33px" />
     </div>
     <div>
-      <divinity-portrait class="hide" bigImg name="Fufluns"></divinity-portrait>
-      <divinity-portrait class="hide" bigImg name="Laran"></divinity-portrait>
-      <divinity-portrait class="hide" bigImg name="Menerva"></divinity-portrait>
       <divinity-portrait class="hide" bigImg name="Tinia"></divinity-portrait>
+      <divinity-portrait class="hide" bigImg name="Menerva"></divinity-portrait>
+      <divinity-portrait class="hide" bigImg name="Uni"></divinity-portrait>
+      <divinity-portrait class="hide" bigImg name="Laran"></divinity-portrait>
       <divinity-portrait class="hide" bigImg name="Turan"></divinity-portrait>
       <divinity-portrait class="hide" bigImg name="Turms"></divinity-portrait>
-      <divinity-portrait class="hide" bigImg name="Uni"></divinity-portrait>
+      <divinity-portrait class="hide" bigImg name="Fufluns"></divinity-portrait>
     </div>
 </div>
 `;
