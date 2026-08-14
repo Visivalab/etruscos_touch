@@ -23,7 +23,7 @@ export const db = {
     },
     "video": {
         "en": "./assets/videos/presentation_en.mp4",
-        "de": null
+        "de": "./assets/videos/presentation_de.mp4"
     },
     "tinia": {
         "img": "./assets/images/tinia.png",
