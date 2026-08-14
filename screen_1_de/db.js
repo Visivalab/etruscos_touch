@@ -1,7 +1,7 @@
 export const db = {
     "intro": {
-        "en": "Originally, the Etruscan pantheon was composed of formless divinities connected to the forces of nature: beings that created but also destroyed and which at times were depicted with celestial and infernal features simultaneously. Only later, thanks to contacts with the Greeks, some of these monstrous-looking divinities took on human physical appearances and were portrayed with distinctive physical and symbolic attributes similar to those of the Greek gods. Later, this heritage would also be passed on to the Romans and their pantheon of gods. Here you can learn about the Etruscan gods and compare them with those of the Greeks and Romans.",
-        "de": "Ursprünglich sind die etruskischen Gottheiten gestaltlos und mit den Naturgewalten verbunden. Sie sind Wesen, die sowohl erschaffen und auch zerstören können. Sie haben zugleich himmlische und unterweltliche Eigenschaften. Erst durch den Kontakt mit den Griechen nehmen diese teilweise furchteinflößenden Gottheiten eine menschliche Gestalt an. Sie erhalten nun auch ähnliche charakteristische körperliche und symbolische Kennzeichen wie die griechischen Götter. Später übernehmen die Römer von den Etruskern ebenfalls die griechische Götterwelt. Hier können Sie mehr über die etruskischen Gottheiten erfahren und sie mit denen der Griechen und Römer vergleichen."
+        "en": "DISCOVER THE ETRUSCAN PANTHEON!",
+        "de": "Entdecken Sie die etruskische Götterwelt!"
     },
     "layout": {
         "greek": {
