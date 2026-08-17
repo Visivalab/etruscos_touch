@@ -8,5 +8,5 @@ export const config = {
         "videoFadeOut": 1000,
         "videoDuration": 0 // Si se deja en 0 detecta automaticamente la duración del video
     },
-    screensaverTimer: 60000
+    screensaverTimer: 120000
 }
